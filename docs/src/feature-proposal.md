@@ -130,8 +130,8 @@ vote tokens to all the validators.
 
 **COST:** As a part of token distribution, the *feature proposer* will be
 financing the creation of SPL Token accounts for each of the validators.  A SPL
-Token account requires 0.00203928 SAFE at creation, so the cost for initiating a
-feature proposal on a network with 500 validators is approximately 1 SAFE.
+Token account requires 0.00203928 PANO at creation, so the cost for initiating a
+feature proposal on a network with 500 validators is approximately 1 PANO.
 
 ### Tally the Votes
 

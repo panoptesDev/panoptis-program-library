@@ -1,9 +1,9 @@
 //! The Mint that represents the native token
 
-/// There are 10^9 lamports in one SAFE
+/// There are 10^9 lamports in one PANO
 pub const DECIMALS: u8 = 9;
 
-// The Mint for native SAFE Token accounts
+// The Mint for native PANO Token accounts
 solana_program::declare_id!("So11111111111111111111111111111111111111112");
 
 #[cfg(test)]

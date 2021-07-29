@@ -1509,7 +1509,7 @@ fn main() {
                     .validator(is_amount)
                     .value_name("AMOUNT")
                     .takes_value(true)
-                    .help("Amount in SAFE to add to the validator stake account. Must be at least the rent-exempt amount for a stake plus 1 SAFE for merging."),
+                    .help("Amount in PANO to add to the validator stake account. Must be at least the rent-exempt amount for a stake plus 1 PANO for merging."),
             )
         )
         .subcommand(SubCommand::with_name("decrease-validator-stake")
@@ -1683,7 +1683,7 @@ fn main() {
                     .value_name("STAKE_ACCOUNT_ADDRESS")
                     .takes_value(true)
                     .requires("withdraw_from")
-                    .help("Stake account to receive SAFE from the stake pool. Defaults to a new stake account."),
+                    .help("Stake account to receive PANO from the stake pool. Defaults to a new stake account."),
             )
             .arg(
                 Arg::with_name("vote_account")

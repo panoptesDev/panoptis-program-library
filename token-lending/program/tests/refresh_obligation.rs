@@ -29,12 +29,12 @@ async fn test_success() {
     // limit to track compute unit increase
     test.set_bpf_compute_max_units(45_000);
 
-    const SAFE_DEPOSIT_AMOUNT: u64 = 100;
+    const PANO_DEPOSIT_AMOUNT: u64 = 100;
     const USDC_BORROW_AMOUNT: u64 = 1_000;
-    const SAFE_DEPOSIT_AMOUNT_LAMPORTS: u64 =
-        SAFE_DEPOSIT_AMOUNT * LAMPORTS_TO_SAFE * INITIAL_COLLATERAL_RATIO;
+    const PANO_DEPOSIT_AMOUNT_LAMPORTS: u64 =
+        PANO_DEPOSIT_AMOUNT * LAMPORTS_TO_PANO * INITIAL_COLLATERAL_RATIO;
     const USDC_BORROW_AMOUNT_FRACTIONAL: u64 = USDC_BORROW_AMOUNT * FRACTIONAL_TO_USDC;
-    const SAFE_RESERVE_COLLATERAL_LAMPORTS: u64 = 2 * SAFE_DEPOSIT_AMOUNT_LAMPORTS;
+    const PANO_RESERVE_COLLATERAL_LAMPORTS: u64 = 2 * PANO_DEPOSIT_AMOUNT_LAMPORTS;
     const USDC_RESERVE_LIQUIDITY_FRACTIONAL: u64 = 2 * USDC_BORROW_AMOUNT_FRACTIONAL;
 
     let user_accounts_owner = Keypair::new();
@@ -56,7 +56,7 @@ async fn test_success() {
         &sol_oracle,
         &user_accounts_owner,
         AddReserveArgs {
-            collateral_amount: SAFE_RESERVE_COLLATERAL_LAMPORTS,
+            collateral_amount: PANO_RESERVE_COLLATERAL_LAMPORTS,
             liquidity_mint_decimals: 9,
             liquidity_mint_pubkey: spl_token::native_mint::id(),
             config: reserve_config,
@@ -88,7 +88,7 @@ async fn test_success() {
         &lending_market,
         &user_accounts_owner,
         AddObligationArgs {
-            deposits: &[(&sol_test_reserve, SAFE_DEPOSIT_AMOUNT_LAMPORTS)],
+            deposits: &[(&sol_test_reserve, PANO_DEPOSIT_AMOUNT_LAMPORTS)],
             borrows: &[(&usdc_test_reserve, USDC_BORROW_AMOUNT_FRACTIONAL)],
             slots_elapsed: 1, // elapsed from 1; clock.slot = 2
             ..AddObligationArgs::default()
@@ -136,7 +136,7 @@ async fn test_success() {
     let collateral = &obligation.deposits[0];
     let liquidity = &obligation.borrows[0];
 
-    let collateral_price = collateral.market_value.try_div(SAFE_DEPOSIT_AMOUNT).unwrap();
+    let collateral_price = collateral.market_value.try_div(PANO_DEPOSIT_AMOUNT).unwrap();
 
     let slot_rate = Rate::from_percent(BORROW_RATE)
         .try_div(SLOTS_PER_YEAR)

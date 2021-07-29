@@ -17,12 +17,12 @@ extern uint64_t do_invoke(SolParameters *params) {
 
   uint8_t seed[] = {'Y', 'o', 'u', ' ', 'p', 'a', 's', 's',
                     ' ', 'b', 'u', 't', 't', 'e', 'r'};
-  const SolSignerSeed seeds[] = {{seed, SAFE_ARRAY_SIZE(seed)},
+  const SolSignerSeed seeds[] = {{seed, PANO_ARRAY_SIZE(seed)},
                                  {&params->data[0], 1}};
-  const SolSignerSeeds signers_seeds[] = {{seeds, SAFE_ARRAY_SIZE(seeds)}};
+  const SolSignerSeeds signers_seeds[] = {{seeds, PANO_ARRAY_SIZE(seeds)}};
 
   SolPubkey expected_allocated_key;
-  if (SUCCESS != sol_create_program_address(seeds, SAFE_ARRAY_SIZE(seeds),
+  if (SUCCESS != sol_create_program_address(seeds, PANO_ARRAY_SIZE(seeds),
                                             params->program_id,
                                             &expected_allocated_key)) {
     return ERROR_INVALID_INSTRUCTION_DATA;
@@ -36,17 +36,17 @@ extern uint64_t do_invoke(SolParameters *params) {
   *(uint16_t *)data = 8;          // Allocate instruction enum value
   *(uint64_t *)(data + 4) = SIZE; // Size to allocate
   const SolInstruction instruction = {system_program_info->key, arguments,
-                                      SAFE_ARRAY_SIZE(arguments), data,
-                                      SAFE_ARRAY_SIZE(data)};
+                                      PANO_ARRAY_SIZE(arguments), data,
+                                      PANO_ARRAY_SIZE(data)};
   return sol_invoke_signed(&instruction, params->ka, params->ka_num,
-                           signers_seeds, SAFE_ARRAY_SIZE(signers_seeds));
+                           signers_seeds, PANO_ARRAY_SIZE(signers_seeds));
 }
 
 extern uint64_t entrypoint(const uint8_t *input) {
   SolAccountInfo accounts[2];
   SolParameters params = (SolParameters){.ka = accounts};
 
-  if (!sol_deserialize(input, &params, SAFE_ARRAY_SIZE(accounts))) {
+  if (!sol_deserialize(input, &params, PANO_ARRAY_SIZE(accounts))) {
     return ERROR_INVALID_ARGUMENT;
   }
 

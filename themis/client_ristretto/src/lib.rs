@@ -194,7 +194,7 @@ pub async fn test_e2e(
         .await
         .unwrap();
 
-    // Send feepayer_keypairs some SAFE
+    // Send feepayer_keypairs some PANO
     println!("Seeding feepayer accounts...");
     let feepayers: Vec<_> = (0..num_users).map(|_| Keypair::new()).collect();
     let recent_blockhash = client.get_recent_blockhash().await.unwrap();

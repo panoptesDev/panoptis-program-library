@@ -8,7 +8,7 @@ var splToken = require('@solana/spl-token');
     'confirmed',
   );
 
-  // Generate a new wallet keypair and airdrop SAFE
+  // Generate a new wallet keypair and airdrop PANO
   var fromWallet = web3.Keypair.generate();
   var fromAirdropSignature = await connection.requestAirdrop(
     fromWallet.publicKey,

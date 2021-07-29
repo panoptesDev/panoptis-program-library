@@ -28,7 +28,7 @@ const AUTHORITY_WITHDRAW: &[u8] = b"withdraw";
 /// Seed for transient stake account
 const TRANSIENT_STAKE_SEED: &[u8] = b"transient";
 
-/// Minimum amount of staked SAFE required in a validator stake account to allow
+/// Minimum amount of staked PANO required in a validator stake account to allow
 /// for merges without a mismatch on credits observed
 pub const MINIMUM_ACTIVE_STAKE: u64 = LAMPORTS_PER_SOL;
 

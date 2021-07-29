@@ -757,7 +757,7 @@ mod test {
 
     #[test]
     fn specific_fee_calculation() {
-        // 10% of 10 SAFE in rewards should be 1 SAFE in fees
+        // 10% of 10 PANO in rewards should be 1 PANO in fees
         let fee = Fee {
             numerator: 1,
             denominator: 10,

@@ -2,19 +2,19 @@
 title: Stake Pool Program
 ---
 
-A program for pooling together SAFE to be staked by an off-chain agent running
+A program for pooling together PANO to be staked by an off-chain agent running
 a Delegation Bot which redistributes the stakes across the network and tries
 to maximize censorship resistance and rewards.
 
 ## Overview
 
-SAFE token holders can earn rewards and help secure the network by staking tokens
+PANO token holders can earn rewards and help secure the network by staking tokens
 to one or more validators. Rewards for staked tokens are based on the current
-inflation rate, total number of SAFE staked on the network, and an individual
+inflation rate, total number of PANO staked on the network, and an individual
 validator’s uptime and commission (fee).
 
 Stake pools are an alternative method of earning staking rewards. This on-chain
-program pools together SAFE to be staked by a staker, allowing SAFE holders to
+program pools together PANO to be staked by a staker, allowing PANO holders to
 stake and earn rewards without managing stakes.
 
 Additional information regarding staking and stake programming is available at:
@@ -28,7 +28,7 @@ This document is intended for the main actors of the stake pool system:
 
 * manager: creates and manages the stake pool, earns fees, can update the fee, staker, and manager
 * staker: adds and removes validators to the pool, rebalances stake among validators
-* user: provides staked SAFE into an existing stake pool
+* user: provides staked PANO into an existing stake pool
 
 In its current iteration, the stake pool only processes totally active stakes.
 Deposits must come from fully active stakes, and withdrawals return a fully
@@ -36,7 +36,7 @@ active stake account.
 
 This means that stake pool managers, stakers, and users must be comfortable with
 creating and delegating stakes, which are more advanced operations than sending and
-receiving SPL tokens and SAFE. Additional information on stake operations are
+receiving SPL tokens and PANO. Additional information on stake operations are
 available at:
 
 - https://docs.solana.com/cli/delegate-stake
@@ -67,7 +67,7 @@ The stake pool staker can add and remove validators, or rebalance the pool by
 decreasing the stake on a validator, waiting an epoch to move it into the stake
 pool's reserve account, then increasing the stake on another validator.
 
-The staker operation to add a new validator requires roughly 1.003 SAFE to create
+The staker operation to add a new validator requires roughly 1.003 PANO to create
 the stake account on a validator, so the stake pool staker will need liquidity
 on hand to fully manage the pool stakes.
 
@@ -181,7 +181,7 @@ The reserve stake account identifier is `J5XB7mWpeaUZxZ6ogXT57qSCobczx27vLZYSgfS
 This account holds onto additional stake used when rebalancing between validators.
 
 For a stake pool with 1000 validators, the cost to create a stake pool is less
-than 0.5 SAFE.
+than 0.5 PANO.
 
 #### Set manager
 
@@ -258,7 +258,7 @@ Creating stake account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN, delegated t
 Signature: 4pA2WKT6d2wkXEtSpiQswv22WyoFad2KX6FdPEzwBiEquvaUBEtzenys5Jh1ABPCh7yc4w8kzqMRRCwDj6ZSUV1K
 ```
 
-In order to maximize censorship resistance, we want to distribute our SAFE to as
+In order to maximize censorship resistance, we want to distribute our PANO to as
 many validators as possible, so let's add a few more.
 
 ```console
@@ -280,17 +280,17 @@ We can see the status of stake account using the Solcoin command-line utility.
 
 ```console
 $ panoptis stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
-Balance: 1.00228288 SAFE
-Rent Exempt Reserve: 0.00228288 SAFE
-Delegated Stake: 1 SAFE
-Active Stake: 0 SAFE
-Activating Stake: 1 SAFE
+Balance: 1.00228288 PANO
+Rent Exempt Reserve: 0.00228288 PANO
+Delegated Stake: 1 PANO
+Active Stake: 0 PANO
+Activating Stake: 1 PANO
 Stake activates starting from epoch: 211
 Stake Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 Withdraw Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 ```
 
-The stake pool creates these special staking accounts with 1 SAFE as the required
+The stake pool creates these special staking accounts with 1 PANO as the required
 delegation amount. The stake and withdraw authorities are the keypair configured
 with the `--config` flag, using the Solcoin CLI default key. More information
 about the Solcoin CLI can be found on the
@@ -307,23 +307,23 @@ We created new validator stake accounts in the last step and staked them. Once
 the stake activates, we can add them to the stake pool.
 
 Also, as mentioned in the last step, validator stake accounts must have exactly
-1.00228288 SAFE, 1 SAFE for the delegation, and 0.00228288 SAFE for the rent-exempt
+1.00228288 PANO, 1 PANO for the delegation, and 0.00228288 PANO for the rent-exempt
 reserve. After activation, the validator stake account may have already gained
 some rewards, so we have to move those rewards off before adding the validator.
 Let's check our stake account again:
 
 ```console
 $ panoptis stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
-Balance: 1.00628288 SAFE
-Rent Exempt Reserve: 0.00228288 SAFE
-Delegated Stake: 1.004 SAFE
-Active Stake: 1.004 SAFE
+Balance: 1.00628288 PANO
+Rent Exempt Reserve: 0.00228288 PANO
+Delegated Stake: 1.004 PANO
+Active Stake: 1.004 PANO
 Stake activates starting from epoch: 211
 Stake Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 Withdraw Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 ```
 
-Since the delegated stake is now 1.004 SAFE, we need to split that additional
+Since the delegated stake is now 1.004 PANO, we need to split that additional
 amount into another stake account before adding.
 
 ```console
@@ -343,7 +343,7 @@ $ panoptis deactivate-stake split-stake.json
 $ panoptis withdraw-stake split-stake.json 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn ALL
 ```
 
-Now that the validator stake account has exactly 1 delegated SAFE, we're ready to
+Now that the validator stake account has exactly 1 delegated PANO, we're ready to
 add this validator to the stake pool!
 
 ```console
@@ -359,10 +359,10 @@ double-check that at any time using the Solcoin command-line utility.
 
 ```console
 $ panoptis stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
-Balance: 1.00228288 SAFE
-Rent Exempt Reserve: 0.00228288 SAFE
-Delegated Stake: 1 SAFE
-Active Stake: 1 SAFE
+Balance: 1.00228288 PANO
+Rent Exempt Reserve: 0.00228288 PANO
+Delegated Stake: 1 PANO
+Active Stake: 1 PANO
 Stake activates starting from epoch: 211
 Delegated Vote Account Address: 2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3
 Stake Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
@@ -375,12 +375,12 @@ If the stake pool staker wants to stop delegating to a vote account, they can
 totally remove the validator stake account from the stake pool.
 
 As with adding a validator, the validator stake account must have exactly
-1.00228288 SAFE (1 SAFE delegated, 0.00228288 SAFE for rent exemption) to be removed.
+1.00228288 PANO (1 PANO delegated, 0.00228288 PANO for rent exemption) to be removed.
 
 If that is not the case, the staker must first decrease the stake to that minimum amount.
 Let's assume that the validator stake account delegated to 
 `AUCzCaGAGjL3uyjFBtJs7KuJcgQWvNZu1Z2S9G3pw77G` has a total delegated amount of
-7.5 SAFE. To reduce that number, the staker can run:
+7.5 PANO. To reduce that number, the staker can run:
 
 ```console
 $ spl-stake-pool decrease-validator-stake Zg5YBPAk8RqBR9kaLLSoN5C8Uv7nErBz1WC63HTsCPR AUCzCaGAGjL3uyjFBtJs7KuJcgQWvNZu1Z2S9G3pw77G 6.5
@@ -408,10 +408,10 @@ We can check the removed stake account:
 
 ```console
 $ panoptis stake-account CrStLEWfme37kDc3nubK9HsmWR5dsuVUuqEKqTR4Mc5E
-Balance: 1.002282880 SAFE
-Rent Exempt Reserve: 0.00228288 SAFE
-Delegated Stake: 1.000000000 SAFE
-Active Stake: 1.000000000 SAFE
+Balance: 1.002282880 PANO
+Rent Exempt Reserve: 0.00228288 PANO
+Delegated Stake: 1.000000000 PANO
+Active Stake: 1.000000000 PANO
 Delegated Vote Account Address: AUCzCaGAGjL3uyjFBtJs7KuJcgQWvNZu1Z2S9G3pw77G
 Stake Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 Withdraw Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
@@ -442,7 +442,7 @@ Max Number of Validators: 1000
 
 This isn't great! The last stake account, `E5KBATUd21Dnjnh5sGFw5ngp9kdVXCcAAYMRe2WsVXie`
 has too much allocated. For their strategy, the staker wants the `15.849959206`
-SAFE to be distributed evenly, meaning around `5.283319735` in each account. They need
+PANO to be distributed evenly, meaning around `5.283319735` in each account. They need
 to move `4.281036854` to `FhFft7ArhZZkh6q4ir1JZMYFgXdH6wkT5M5nmDDb1Q13` and
 `1.872447062` to `FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN`.
 
@@ -450,16 +450,16 @@ to move `4.281036854` to `FhFft7ArhZZkh6q4ir1JZMYFgXdH6wkT5M5nmDDb1Q13` and
 
 First, they need to decrease the amount on stake account
 `E5KBATUd21Dnjnh5sGFw5ngp9kdVXCcAAYMRe2WsVXie`, delegated to
-`HJiC8iJ4Sj846SswQuauFJK93UvV6zp3c2T6jzGqzhhz`, by total of `6.153483916` SAFE.
+`HJiC8iJ4Sj846SswQuauFJK93UvV6zp3c2T6jzGqzhhz`, by total of `6.153483916` PANO.
 
-They decrease that amount of SAFE:
+They decrease that amount of PANO:
 
 ```sh
 $ spl-stake-pool decrease-validator-stake Zg5YBPAk8RqBR9kaLLSoN5C8Uv7nErBz1WC63HTsCPR HJiC8iJ4Sj846SswQuauFJK93UvV6zp3c2T6jzGqzhhz 6.153483916
 Signature: ZpQGwT85rJ8Y9afdkXhKo3TVv4xgTz741mmZj2vW7mihYseAkFsazWxza2y8eNGY4HDJm15c1cStwyiQzaM3RpH
 ```
 
-Internally, this instruction splits and deactivates 6.153483916 SAFE from the
+Internally, this instruction splits and deactivates 6.153483916 PANO from the
 validator stake account `E5KBATUd21Dnjnh5sGFw5ngp9kdVXCcAAYMRe2WsVXie` into a
 transient stake account, owned and managed entirely by the stake pool.
 
@@ -474,14 +474,14 @@ can increase the stake on the two other validators,
 `8r1f8mwrUiYdg2Rx9sxTh4M3UAUcCBBrmRA3nxk3Z6Lm` and
 `2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3`.
 
-They add 4.281036854 SAFE to `8r1f8mwrUiYdg2Rx9sxTh4M3UAUcCBBrmRA3nxk3Z6Lm`:
+They add 4.281036854 PANO to `8r1f8mwrUiYdg2Rx9sxTh4M3UAUcCBBrmRA3nxk3Z6Lm`:
 
 ```sh
 $ spl-stake-pool increase-validator-stake Zg5YBPAk8RqBR9kaLLSoN5C8Uv7nErBz1WC63HTsCPR 8r1f8mwrUiYdg2Rx9sxTh4M3UAUcCBBrmRA3nxk3Z6Lm 4.281036854
 Signature: 3GJACzjUGLPjcd9RLUW86AfBLWKapZRkxnEMc2yHT6erYtcKBgCapzyrVH6VN8Utxj7e2mtvzcigwLm6ZafXyTMw
 ```
 
-And they add 1.872447062 SAFE to `2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3`:
+And they add 1.872447062 PANO to `2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3`:
 
 ```sh
 $ spl-stake-pool increase-validator-stake Zg5YBPAk8RqBR9kaLLSoN5C8Uv7nErBz1WC63HTsCPR 2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3 1.872447062
@@ -689,7 +689,7 @@ Signature: 1215wJUY7vj82TQoGCacQ2VJZ157HnCTvfsUXkYph3nZzJNmeDaGmy1nCD7hkhFfxnQYY
 
 #### Withdraw stake
 
-Whenever the user wants to recover their SAFE plus accrued rewards, they can provide their
+Whenever the user wants to recover their PANO plus accrued rewards, they can provide their
 pool tokens in exchange for an activated stake account.
 
 Let's withdraw 5 pool tokens from the stake pool.
@@ -707,10 +707,10 @@ Let's double-check the status of the stake account:
 
 ```console
 $ panoptis stake-account F8iaFJgNy9HS4UBodH8v7BLQA5xDDk25jp5Sf9v5TqhF
-Balance: 5.00228288 SAFE
-Rent Exempt Reserve: 0.00228288 SAFE
-Delegated Stake: 5 SAFE
-Active Stake: 5 SAFE
+Balance: 5.00228288 PANO
+Rent Exempt Reserve: 0.00228288 PANO
+Delegated Stake: 5 PANO
+Active Stake: 5 PANO
 Delegated Vote Account Address: EhRbKi4Vhm1oUCGWHiLEMYZqDrHwEd7Jgzgi26QJKvfQ
 Stake Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 Withdraw Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
@@ -759,7 +759,7 @@ be able to withdraw their funds.
 
 To get around this case, it is also possible to withdraw from the stake pool's
 reserve, but only if all of the validator stake accounts are at the minimum amount of
-`1 SAFE + stake account rent exemption`.
+`1 PANO + stake account rent exemption`.
 
 ```console
 $ spl-stake-pool withdraw Zg5YBPAk8RqBR9kaLLSoN5C8Uv7nErBz1WC63HTsCPR 5 --use-reserve
@@ -817,7 +817,7 @@ When processing withdrawals, the order of priority goes:
 * reserve stake account
 
 If there is preferred withdraw validator, and that validator stake account has
-any SAFE, a user must withdraw from that account.
+any PANO, a user must withdraw from that account.
 
 If that account is empty, or the preferred withdraw validator stake account is
 not set, then the user must withdraw from any validator stake account.

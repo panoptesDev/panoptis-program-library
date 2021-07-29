@@ -3646,7 +3646,7 @@ feeCalculator: FeeCalculator,...
   ): string;
 
   /**
-   * There are 1-billion lamports in one SAFE
+   * There are 1-billion lamports in one PANO
    */
   declare export var LAMPORTS_PER_SOL: any; // 1000000000
 }

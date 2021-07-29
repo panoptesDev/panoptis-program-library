@@ -30,7 +30,7 @@ extern uint64_t entrypoint(const uint8_t *input) {
   SolAccountInfo accounts[0];
   SolParameters params = (SolParameters){.ka = accounts};
 
-  if (!sol_deserialize(input, &params, SAFE_ARRAY_SIZE(accounts))) {
+  if (!sol_deserialize(input, &params, PANO_ARRAY_SIZE(accounts))) {
     return ERROR_INVALID_ARGUMENT;
   }
 

@@ -109,7 +109,7 @@ Each Governance Realm that gets created has the option to also have a Council mi
 A council mint is simply a separate mint from the Community mint.
 What this means is that users can submit Proposals that have a different voting population from a different mint
 that can affect the same program. A practical application of this policy may be to have a very large population control
-major version bumps of Solcoin via normal SAFE, for instance, but hot fixes be controlled via Council tokens,
+major version bumps of Solcoin via normal PANO, for instance, but hot fixes be controlled via Council tokens,
 of which there may be only 30, and which may be themselves minted and distributed via proposals by the governing population.
 
 ### Proposal Workflow

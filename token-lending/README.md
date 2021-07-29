@@ -88,7 +88,7 @@ This is optional! You can skip these steps and use the [Token Lending CLI](./cli
    panoptis config set --url https://api.devnet.panoptis.org
    ```
 
-1. Score yourself some sweet SAFE:
+1. Score yourself some sweet PANO:
    ```shell
    panoptis airdrop -k owner.json 10
    panoptis airdrop -k owner.json 10
@@ -107,14 +107,14 @@ This is optional! You can skip these steps and use the [Token Lending CLI](./cli
    ```
    If the deployment doesn't succeed, follow [this guide](https://docs.solana.com/cli/deploy-a-program#resuming-a-failed-deploy) to resume it.
 
-1. Wrap some of your SAFE as an SPL Token:
+1. Wrap some of your PANO as an SPL Token:
    ```shell
    spl-token wrap \
       --fee-payer owner.json \
       10.0 \
       -- owner.json
 
-   # Wrapping 10 SAFE into AJ2sgpgj6ZeQazPPiDyTYqN9vbj58QMaZQykB9Sr6XY
+   # Wrapping 10 PANO into AJ2sgpgj6ZeQazPPiDyTYqN9vbj58QMaZQykB9Sr6XY
    ```
    You'll use this for initial reserve liquidity. Note the SPL Token account pubkey (e.g. `AJ2sgpgj6ZeQazPPiDyTYqN9vbj58QMaZQykB9Sr6XY`).
 

@@ -209,10 +209,10 @@ price is always the same.
 
 Constant price curves are most useful for fixed offerings of new tokens that
 explicitly should not have market dynamics. For example, a decentralized
-game creator wants to sell new "SAFEGAME" tokens to be used in their
-game, so they create a constant price swap of 2 USDC per SAFEGAME, and supply all
-of the SAFEGAME tokens at swap creation. Users can go to the swap and purchase all
-of the tokens they want and not worry about the market making SAFEGAME tokens too
+game creator wants to sell new "PANOGAME" tokens to be used in their
+game, so they create a constant price swap of 2 USDC per PANOGAME, and supply all
+of the PANOGAME tokens at swap creation. Users can go to the swap and purchase all
+of the tokens they want and not worry about the market making PANOGAME tokens too
 expensive.
 
 ### Stable (under construction)
@@ -251,27 +251,27 @@ constant price curve, but the key difference is that the offset curve captures
 normal market dynamics, in that the offered token price will increase as it is
 bought.
 
-For example, a decentralized betting application creator wants to sell new "SAFEBET"
+For example, a decentralized betting application creator wants to sell new "PANOBET"
 tokens on the market in exchange for USDC, and they believe each token is worth
-at least 4 USDC.  They create a pool between SAFEBET and USDC, funding
-one side with 1,000 SAFEBET, and the other side with 0 USDC, but an offset
+at least 4 USDC.  They create a pool between PANOBET and USDC, funding
+one side with 1,000 PANOBET, and the other side with 0 USDC, but an offset
 of 4,000 USDC.
 
-If a trader tries to buy SAFEBET with 40 USDC, the invariant is calculated 
+If a trader tries to buy PANOBET with 40 USDC, the invariant is calculated 
 with the offset:
 
 ```
-(SAFEBET_total) * (USDC_total + USDC_offset) = invariant
+(PANOBET_total) * (USDC_total + USDC_offset) = invariant
 1,000 * (0 + 4,000) = 4,000,000
 
-(SAFEBET_total - SAFEBET_out) * (USDC_total + USDC_offset + USDC_in) = invariant
-SAFEBET_out = 9.901
+(PANOBET_total - PANOBET_out) * (USDC_total + USDC_offset + USDC_in) = invariant
+PANOBET_out = 9.901
 ```
 
-The trader received 9.901 SAFEBET for 40 USDC, so the price per SAFEBET was
-roughly 4.04, slightly higher than the minimum of 4 USDC per SAFEBET.
+The trader received 9.901 PANOBET for 40 USDC, so the price per PANOBET was
+roughly 4.04, slightly higher than the minimum of 4 USDC per PANOBET.
 
-Conversely, if a trader tries to buy USDC with SAFEBET immediately after creation,
+Conversely, if a trader tries to buy USDC with PANOBET immediately after creation,
 it will fail because there is no USDC actually present in the pool.
 
 ## Testing

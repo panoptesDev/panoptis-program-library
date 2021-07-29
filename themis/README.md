@@ -61,7 +61,7 @@ Point to the testnet cluster (default is mainnet-beta):
 panoptis config set --url http://api.testnet.panoptis.org
 ```
 
-Create a keypair and airdrop it some SAFE:
+Create a keypair and airdrop it some PANO:
 
 ```bash
 panoptis-keygen new --no-passphrase
