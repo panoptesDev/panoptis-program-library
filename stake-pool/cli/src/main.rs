@@ -26,7 +26,7 @@ use {
     solana_remote_wallet::remote_wallet::RemoteWalletManager,
     solana_sdk::{
         commitment_config::CommitmentConfig,
-        native_token::{self, Safe},
+        native_token::{self, Sol},
         signature::{Keypair, Signer},
         signers::Signers,
         system_instruction,
@@ -76,8 +76,8 @@ fn check_fee_payer_balance(config: &Config, required_balance: u64) -> Result<(),
         Err(format!(
             "Fee payer, {}, has insufficient balance: {} required, {} available",
             config.fee_payer.pubkey(),
-            Safe(required_balance),
-            Safe(balance)
+            Sol(required_balance),
+            Sol(balance)
         )
         .into())
     } else {
@@ -740,7 +740,7 @@ fn command_list(config: &Config, stake_pool_address: &Pubkey) -> CommandResult {
     println!(
         "Reserve Account: {}\tAvailable Balance: {}",
         stake_pool.reserve_stake,
-        Safe(reserve_stake.lamports - minimum_reserve_stake_balance),
+        Sol(reserve_stake.lamports - minimum_reserve_stake_balance),
     );
 
     for validator in &validator_list.validators {
@@ -759,9 +759,9 @@ fn command_list(config: &Config, stake_pool_address: &Pubkey) -> CommandResult {
                 "Vote Account: {}\tStake Account: {}\tActive Balance: {}\tTransient Stake Account: {}\tTransient Balance: {}\tLast Update Epoch: {}{}",
                 validator.vote_account_address,
                 stake_account_address,
-                Safe(validator.active_stake_lamports),
+                Sol(validator.active_stake_lamports),
                 transient_stake_account_address,
-                Safe(validator.transient_stake_lamports),
+                Sol(validator.transient_stake_lamports),
                 validator.last_update_epoch,
                 if validator.last_update_epoch != epoch_info.epoch {
                     " [UPDATE REQUIRED]"
@@ -773,7 +773,7 @@ fn command_list(config: &Config, stake_pool_address: &Pubkey) -> CommandResult {
             println!(
                 "Vote Account: {}\tBalance: {}\tLast Update Epoch: {}",
                 validator.vote_account_address,
-                Safe(validator.stake_lamports()),
+                Sol(validator.stake_lamports()),
                 validator.last_update_epoch,
             );
         }
@@ -784,7 +784,7 @@ fn command_list(config: &Config, stake_pool_address: &Pubkey) -> CommandResult {
     }
     println!(
         "Total Pool Stake: {}{}",
-        Safe(stake_pool.total_stake_lamports),
+        Sol(stake_pool.total_stake_lamports),
         if stake_pool.last_update_epoch != epoch_info.epoch {
             " [UPDATE REQUIRED]"
         } else {
@@ -1041,7 +1041,7 @@ fn command_withdraw(
 
         println!(
             "Withdrawing {}, or {} pool tokens, from stake account {}, delegated to {:?}, stake / withdraw authority {}",
-            Safe(sol_withdraw_amount),
+            Sol(sol_withdraw_amount),
             spl_token::amount_to_ui_amount(withdraw_account.pool_amount, pool_mint.decimals),
             withdraw_account.stake_address,
             withdraw_account.vote_address,

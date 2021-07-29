@@ -1,7 +1,7 @@
 [package]
 name = "spl-shared-memory"
 version = "2.0.6"
-description = "Safecoin Program Library Shared-memory"
+description = "Solcoin Program Library Shared-memory"
 authors = ["Solana Maintainers <maintainers@solana.foundation>"]
 repository = "https://github.com/solana-labs/solana-program-library"
 license = "Apache-2.0"

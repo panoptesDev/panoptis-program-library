@@ -37,8 +37,8 @@ void dealloc(BumpAllocator *self, void *ptr) {
 }
 
 extern uint64_t entrypoint(const uint8_t *input) {
-  SafeAccountInfo accounts[2];
-  SafeParameters params = (SafeParameters){.ka = accounts};
+  SolAccountInfo accounts[2];
+  SolParameters params = (SolParameters){.ka = accounts};
 
   if (!sol_deserialize(input, &params, SAFE_ARRAY_SIZE(accounts))) {
     return ERROR_INVALID_ARGUMENT;

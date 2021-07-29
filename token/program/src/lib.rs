@@ -1,7 +1,7 @@
 #![deny(missing_docs)]
 #![forbid(unsafe_code)]
 
-//! An ERC20-like Token program for the Safecoin blockchain
+//! An ERC20-like Token program for the Solcoin blockchain
 
 pub mod error;
 pub mod instruction;

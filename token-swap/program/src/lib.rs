@@ -1,6 +1,6 @@
 #![deny(missing_docs)]
 
-//! An Uniswap-like program for the Safecoin blockchain.
+//! An Uniswap-like program for the Solcoin blockchain.
 
 pub mod constraints;
 pub mod curve;

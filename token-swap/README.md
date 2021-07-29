@@ -1,6 +1,6 @@
 # Token Swap Program
 
-A Uniswap-like exchange for the Token program on the Safecoin blockchain, deployed
+A Uniswap-like exchange for the Token program on the Solcoin blockchain, deployed
 to `6RWe1TGwvojnbAynyWrHzm3GgHf7AmX7kLQTJG7vHCfb` on all networks.
 
 Full documentation is available at https://spl.solana.com/token-swap
@@ -10,7 +10,7 @@ JavaScript bindings are available in the `./js` directory.
 ## Building
 
 To build a development version of the Token Swap program, you can use the normal
-build command for Safecoin programs:
+build command for Solcoin programs:
 
 ```sh
 cargo build-bpf
@@ -21,7 +21,7 @@ to fix constraints on fees and fee account owner. A developer can
 deploy the program, allow others to create pools, and earn a "protocol fee" on
 all activity.
 
-Since Safecoin programs cannot contain any modifiable state, we must hard-code
+Since Solcoin programs cannot contain any modifiable state, we must hard-code
 all constraints into the program.  `SwapConstraints` in `program/src/constraints.rs`
 contains all hard-coded fields for fees.  Additionally the
 `SWAP_PROGRAM_OWNER_FEE_ADDRESS` environment variable specifies the public key
@@ -72,7 +72,7 @@ exact problem.
 ### Integration tests
 
 You can test the JavaScript bindings and on-chain interactions using
-`safecoin-test-validator`, included in the Safecoin Tool Suite.  See the
+`safecoin-test-validator`, included in the Solcoin Tool Suite.  See the
 [CLI installation instructions](https://docs.solana.com/cli/install-solana-cli-tools).
 
 From `./js`, install the required modules:

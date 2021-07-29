@@ -1,7 +1,7 @@
 [package]
 name = "spl-example-cross-program-invocation"
 version = "1.0.0"
-description = "Safecoin Program Library Cross Program Invocation Example"
+description = "Solcoin Program Library Cross Program Invocation Example"
 authors = ["Solana Maintainers <maintainers@solana.foundation>"]
 repository = "https://github.com/solana-labs/solana-program-library"
 license = "Apache-2.0"

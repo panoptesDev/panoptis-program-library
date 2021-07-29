@@ -5,7 +5,7 @@ A basic command-line for creating and using SPL Stake Pools.  See https://spl.so
 ## Scripts for setting up a stake pool
 
 Under `./scripts`, this repo also contains some bash scripts that are useful for
-setting up your own stake pool. These scripts require the Safecoin CLI tool suite,
+setting up your own stake pool. These scripts require the Solcoin CLI tool suite,
 which can be downloaded by following the instructions at
 (https://docs.solana.com/cli/install-solana-cli-tools). Additionally, you must
 have a usable keypair, created at the default location using `safecoin-keygen new`.

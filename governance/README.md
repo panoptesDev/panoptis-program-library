@@ -55,7 +55,7 @@ Bpf-upgradable-loader allows any signer who has Upgrade authority over a Buffer 
 to upgrade it using its Upgrade command.
 Normally, this is the developer who created and deployed the program, and this creation of the Buffer account containing
 the new program data and overwriting of the existing Program account's data with it is handled in the background for you
-by the Safecoin program deploy cli command.
+by the Solcoin program deploy cli command.
 However, in order for Governance to be useful, Governance now needs this authority.
 
 In similar fashion for Mint and Token governances the relevant authorities to mint and transfer tokens
@@ -109,7 +109,7 @@ Each Governance Realm that gets created has the option to also have a Council mi
 A council mint is simply a separate mint from the Community mint.
 What this means is that users can submit Proposals that have a different voting population from a different mint
 that can affect the same program. A practical application of this policy may be to have a very large population control
-major version bumps of Safecoin via normal SAFE, for instance, but hot fixes be controlled via Council tokens,
+major version bumps of Solcoin via normal SAFE, for instance, but hot fixes be controlled via Council tokens,
 of which there may be only 30, and which may be themselves minted and distributed via proposals by the governing population.
 
 ### Proposal Workflow

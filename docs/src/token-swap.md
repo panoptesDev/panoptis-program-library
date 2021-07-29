@@ -2,7 +2,7 @@
 title: Token Swap Program
 ---
 
-A Uniswap-like exchange for the Token program on the Safecoin blockchain,
+A Uniswap-like exchange for the Token program on the Solcoin blockchain,
 implementing multiple automated market maker (AMM) curves.
 
 Here is some important developer information regarding the program deployed on devnet,
@@ -38,7 +38,7 @@ excellent documentation and whitepapers.
 
 ## Background
 
-Safecoin's programming model and the definitions of the Safecoin terms used in this
+Solcoin's programming model and the definitions of the Solcoin terms used in this
 document are available at:
 
 - https://docs.solana.com/apps
@@ -68,7 +68,7 @@ Note that each instruction has a simple code example that can be found in the
 ### Creating a new token swap pool
 
 The creation of a pool showcases the account, instruction, and authorization
-models on Safecoin, which can be very different compared to other blockchains.
+models on Solcoin, which can be very different compared to other blockchains.
 
 Initialization of a pool between two token types, which we'll call "A" 
 and "B" for simplicity, requires the following accounts:
@@ -112,7 +112,7 @@ the `swap` instruction.  The swap instruction transfers tokens from a user's sou
 account into the swap's source token account, and then transfers tokens from
 its destination token account into the user's destination token account.
 
-Since Safecoin programs require all accounts to be declared in the instruction,
+Since Solcoin programs require all accounts to be declared in the instruction,
 users need to gather all account information from the pool state account:
 the token A and B accounts, pool token mint, and fee account.
 

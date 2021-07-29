@@ -11,7 +11,7 @@ log from a trusted provider.
 
 ## Background
 
-Safecoin's programming model and the definitions of the Safecoin terms used in this
+Solcoin's programming model and the definitions of the Solcoin terms used in this
 document are available at:
 
 - https://docs.solana.com/apps

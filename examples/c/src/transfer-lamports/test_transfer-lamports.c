@@ -3,23 +3,23 @@
 
 Test(transfer, sanity) {
   uint8_t instruction_data[] = {};
-  SafePubkey program_id = {.x = {
+  SolPubkey program_id = {.x = {
                               1,
                           }};
-  SafePubkey source_key = {.x = {
+  SolPubkey source_key = {.x = {
                               2,
                           }};
   uint64_t source_lamports = 5;
   uint8_t source_data[] = {};
-  SafePubkey destination_program_id = {.x = {
+  SolPubkey destination_program_id = {.x = {
                                           3,
                                       }};
-  SafePubkey destination_key = {.x = {
+  SolPubkey destination_key = {.x = {
                                    4,
                                }};
   uint64_t destination_lamports = 0;
   uint8_t destination_data[] = {};
-  SafeAccountInfo accounts[] = {{
+  SolAccountInfo accounts[] = {{
                                    &source_key,
                                    &source_lamports,
                                    sizeof(source_data),
@@ -41,7 +41,7 @@ Test(transfer, sanity) {
                                    true,
                                    false,
                                }};
-  SafeParameters params = {accounts, sizeof(accounts) / sizeof(SafeAccountInfo),
+  SolParameters params = {accounts, sizeof(accounts) / sizeof(SolAccountInfo),
                           instruction_data, sizeof(instruction_data),
                           &program_id};
 

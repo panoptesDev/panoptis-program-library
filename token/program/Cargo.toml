@@ -1,7 +1,7 @@
 [package]
 name = "spl-token"
 version = "3.2.0"
-description = "Safecoin Program Library Token"
+description = "Solcoin Program Library Token"
 authors = ["Solana Maintainers <maintainers@solana.foundation>"]
 repository = "https://github.com/solana-labs/solana-program-library"
 license = "Apache-2.0"

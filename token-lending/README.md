@@ -1,6 +1,6 @@
 # Token Lending program
 
-A lending protocol for the Token program on the Safecoin blockchain inspired by Aave and Compound.
+A lending protocol for the Token program on the Solcoin blockchain inspired by Aave and Compound.
 
 Full documentation is available at https://spl.solana.com/token-lending
 
@@ -25,7 +25,7 @@ Please note that only the lending program deployed to devnet is currently operat
 
 This is optional! You can skip these steps and use the [Token Lending CLI](./cli/README.md) with one of the on-chain programs listed above to create a lending market and add reserves to it.
 
-1. [Install the Safecoin CLI](https://docs.solana.com/cli/install-solana-cli-tools)
+1. [Install the Solcoin CLI](https://docs.solana.com/cli/install-solana-cli-tools)
 
 1. Install the Token and Token Lending CLIs:
    ```shell

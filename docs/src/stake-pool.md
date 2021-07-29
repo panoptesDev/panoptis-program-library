@@ -73,7 +73,7 @@ on hand to fully manage the pool stakes.
 
 ## Background
 
-Safecoin's programming model and the definitions of the Safecoin terms used in this
+Solcoin's programming model and the definitions of the Solcoin terms used in this
 document are available at:
 
 - https://docs.solana.com/apps
@@ -113,7 +113,7 @@ Keypair Path: ${HOME}/.config/solana/id.json
 
 #### Cluster RPC URL
 
-See [Safecoin clusters](https://docs.solana.com/clusters) for cluster-specific RPC URLs
+See [Solcoin clusters](https://docs.solana.com/clusters) for cluster-specific RPC URLs
 ```console
 safecoin config set --url https://api.devnet.safecoin.org
 ```
@@ -246,7 +246,7 @@ In order to accommodate large numbers of user deposits into the stake pool, the
 stake pool only manages one stake account per validator. To add a new validator
 to the stake pool, we first create a validator-associated stake account.
 
-Looking at [validators.app](https://www.validators.app/) or other Safecoin validator
+Looking at [validators.app](https://www.validators.app/) or other Solcoin validator
 lists, we choose some validators at random and start with identity
 `8SQEcP4FaYQySktNQeyxF3w8pvArx3oMEh7fPrzkN9pu` on vote account
 `2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3`. Let's create a validator stake account
@@ -276,7 +276,7 @@ Signature: yQqXCbuA66wQsHtkziNg3XadfZF5aCmvjfentwbZJnSPeEjJwPka3M1QY5GmR1efprptq
 NOTE: These stake accounts have not been added to the stake pool yet. Stake pools
 only accept deposits from fully active (warmed-up) delegated stake accounts.
 
-We can see the status of stake account using the Safecoin command-line utility.
+We can see the status of stake account using the Solcoin command-line utility.
 
 ```console
 $ safecoin stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
@@ -292,9 +292,9 @@ Withdraw Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 
 The stake pool creates these special staking accounts with 1 SAFE as the required
 delegation amount. The stake and withdraw authorities are the keypair configured
-with the `--config` flag, using the Safecoin CLI default key. More information
-about the Safecoin CLI can be found on the
-[Safecoin Docs](https://docs.solana.com/running-validator/validator-start#configure-solana-cli).
+with the `--config` flag, using the Solcoin CLI default key. More information
+about the Solcoin CLI can be found on the
+[Solcoin Docs](https://docs.solana.com/running-validator/validator-start#configure-solana-cli).
 
 Now that we have created these delegated validator stake accounts, we need to
 wait an epoch for the delegation to activate.
@@ -355,7 +355,7 @@ Signature: 3N1K89rGV9gWueTTrPGTDBwKAp8BikQhKHMFoREw98Q1piXFeZSSxqfnRQexrfAZQfrpY
 Users can start depositing their activated stakes into the stake pool, as
 long as they are delegated to the same vote account, which was
 `FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN` in this example.  You can also
-double-check that at any time using the Safecoin command-line utility.
+double-check that at any time using the Solcoin command-line utility.
 
 ```console
 $ safecoin stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
@@ -794,7 +794,7 @@ the stake on a validator, one epoch later, the update operation will merge the
 decreased stake into the reserve. Conversely, whenever the staker increases the
 stake on a validator, the lamports are drawn from the reserve stake account.
 
-### Safety of Funds
+### Solty of Funds
 
 One of the primary aims of the stake pool program is to always allow pool token
 holders to withdraw their funds at any time.
@@ -839,7 +839,7 @@ epoch after activation for your stake account to match up with the stake pool's 
 
 ### Transaction sizes
 
-The Safecoin transaction processor has two important limitations:
+The Solcoin transaction processor has two important limitations:
 
 * size of the overall transaction, limited to roughly 1 MTU / packet
 * computation budget per instruction

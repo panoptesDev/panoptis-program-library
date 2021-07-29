@@ -1,7 +1,7 @@
 [package]
 name = "spl-example-custom-heap"
 version = "1.0.0"
-description = "Safecoin Program Library Custom Heap Example"
+description = "Solcoin Program Library Custom Heap Example"
 authors = ["Solana Maintainers <maintainers@solana.foundation>"]
 repository = "https://github.com/solana-labs/solana-program-library"
 license = "Apache-2.0"

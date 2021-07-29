@@ -2,7 +2,7 @@
 title: Feature Proposal Program
 ---
 
-The Feature Proposal Program provides a workflow for activation of Safecoin
+The Feature Proposal Program provides a workflow for activation of Solcoin
 network features through community vote based on validator stake weight.
 
 Community voting is accomplished using [SPL Tokens](token.md).  Tokens are
@@ -13,7 +13,7 @@ threshold is met the feature is activated.
 
 ## Background
 
-The Safecoin validator software supports runtime feature activation through the
+The Solcoin validator software supports runtime feature activation through the
 built-in `Feature` program.  This program ensures that features are activated
 simultaneously across all validators to avoid divergent behavior that would
 cause hard forks or otherwise break consensus.
@@ -25,7 +25,7 @@ Rust modules are the primitives for this facility, and the `safecoin feature`
 command-line subcommands allow for easy feature status inspection and feature
 activation.
 
-The `safecoin feature activate` workflow was designed for use by the core Safecoin
+The `safecoin feature activate` workflow was designed for use by the core Solcoin
 developers to allow for low-overhead addition of non-controversial network
 features over time.
 
@@ -58,7 +58,7 @@ This section describes the life cycle of a feature proposal.
 
 ### Implement the Feature
 The first step is to conceive of the new feature and realize it in the
-Safecoin code base, working with the core Safecoin developers at https://github.com/solana-labs/solana.
+Solcoin code base, working with the core Solcoin developers at https://github.com/solana-labs/solana.
 
 During the implementation, a *feature id* will be required to identity the new
 feature in the code base to avoid the new functionality until its activation.
@@ -90,7 +90,7 @@ only possible by the Feature Proposal Program.
 
 ### Initiate the Feature Proposal
 
-After the feature is implemented and deployed to the Safecoin cluster,
+After the feature is implemented and deployed to the Solcoin cluster,
 the *feature id* will be visible in `safecoin feature status` and the *feature
 proposer* may initiate the community proposal process.
 

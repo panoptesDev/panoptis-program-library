@@ -1,6 +1,6 @@
 #![deny(missing_docs)]
 
-//! A lending program for the Safecoin blockchain.
+//! A lending program for the Solcoin blockchain.
 
 pub mod entrypoint;
 pub mod error;

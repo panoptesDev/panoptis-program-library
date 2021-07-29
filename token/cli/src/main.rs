@@ -1353,7 +1353,7 @@ fn main() {
                 .global(true)
                 .validator(is_url_or_moniker)
                 .help(
-                    "URL for Safecoin's JSON RPC or moniker (or their first letter): \
+                    "URL for Solcoin's JSON RPC or moniker (or their first letter): \
                        [mainnet-beta, testnet, devnet, localhost] \
                     Default from the configuration file."
                 ),

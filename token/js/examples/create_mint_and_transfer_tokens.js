@@ -12,7 +12,7 @@ var splToken = require('@solana/spl-token');
   var fromWallet = web3.Keypair.generate();
   var fromAirdropSignature = await connection.requestAirdrop(
     fromWallet.publicKey,
-    web3.LAMPORTS_PER_SAFE,
+    web3.LAMPORTS_PER_SOL,
   );
   //wait for airdrop confirmation
   await connection.confirmTransaction(fromAirdropSignature);
@@ -30,12 +30,12 @@ var splToken = require('@solana/spl-token');
     splToken.TOKEN_PROGRAM_ID,
   );
 
-  //get the token account of the fromWallet Safecoin address, if it does not exist, create it
+  //get the token account of the fromWallet Solcoin address, if it does not exist, create it
   let fromTokenAccount = await mint.getOrCreateAssociatedAccountInfo(
     fromWallet.publicKey,
   );
 
-  //get the token account of the toWallet Safecoin address, if it does not exist, create it
+  //get the token account of the toWallet Solcoin address, if it does not exist, create it
   var toTokenAccount = await mint.getOrCreateAssociatedAccountInfo(
     toWallet.publicKey,
   );

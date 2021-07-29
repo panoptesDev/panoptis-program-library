@@ -1,5 +1,5 @@
 #![deny(missing_docs)]
-//! Shared memory program for the Safecoin blockchain.
+//! Shared memory program for the Solcoin blockchain.
 //
 // Useful for returning data from cross-program invoked programs to the invoker.
 //
@@ -85,11 +85,11 @@ unsafe fn deserialize_input_parameters<'a>(
 /// little-endian offset into the account data.  The rest of the instruction
 /// data is written into the account data starting at that offset.
 ///
-/// This program uses the raw Safecoin runtime's entrypoint which takes a pointer
+/// This program uses the raw Solcoin runtime's entrypoint which takes a pointer
 /// to serialized input parameters.  For more information about the format of
 /// the serialized input parameters see `solana_sdk::entrypoint::deserialize`
 ///
-/// # Safety
+/// # Solty
 #[no_mangle]
 pub unsafe extern "C" fn entrypoint(input: *mut u8) -> u64 {
     match deserialize_input_parameters(input) {

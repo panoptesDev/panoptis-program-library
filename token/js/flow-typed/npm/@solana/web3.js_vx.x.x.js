@@ -3648,7 +3648,7 @@ feeCalculator: FeeCalculator,...
   /**
    * There are 1-billion lamports in one SAFE
    */
-  declare export var LAMPORTS_PER_SAFE: any; // 1000000000
+  declare export var LAMPORTS_PER_SOL: any; // 1000000000
 }
 
 

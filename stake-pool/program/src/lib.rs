@@ -16,7 +16,7 @@ pub mod entrypoint;
 pub use solana_program;
 use {
     crate::{stake_program::Meta, state::Fee},
-    solana_program::{native_token::LAMPORTS_PER_SAFE, pubkey::Pubkey},
+    solana_program::{native_token::LAMPORTS_PER_SOL, pubkey::Pubkey},
 };
 
 /// Seed for deposit authority seed
@@ -30,7 +30,7 @@ const TRANSIENT_STAKE_SEED: &[u8] = b"transient";
 
 /// Minimum amount of staked SAFE required in a validator stake account to allow
 /// for merges without a mismatch on credits observed
-pub const MINIMUM_ACTIVE_STAKE: u64 = LAMPORTS_PER_SAFE;
+pub const MINIMUM_ACTIVE_STAKE: u64 = LAMPORTS_PER_SOL;
 
 /// Maximum amount of validator stake accounts to update per
 /// `UpdateValidatorListBalance` instruction, based on compute limits
