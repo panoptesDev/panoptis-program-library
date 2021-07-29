@@ -2,10 +2,10 @@ import * as index from './index.js';
 import * as schema from './schema.js';
 import BN from 'bn.js';
 import assert, {deepStrictEqual} from 'assert';
-import {SOLANA_SCHEMA, PublicKey, Connection} from '@solana/web3.js';
+import {SAFEANA_SCHEMA, PublicKey, Connection} from '@safecoin/web3.js';
 
 // First populate schema
-schema.addStakePoolSchema(SOLANA_SCHEMA);
+schema.addStakePoolSchema(SAFEANA_SCHEMA);
 
 describe('Integration test', () => {
   it('should successfully decode all validators from devnet', async () => {
@@ -15,7 +15,7 @@ describe('Integration test', () => {
      * decodes them, and prints their details.
      */
     const connection = new Connection(
-      'https://api.devnet.solana.com/',
+      'https://api.devnet.safecoin.org/',
       'confirmed',
     );
     const STAKE_POOL_PROGRAM_ADDR = new PublicKey(
@@ -43,7 +43,7 @@ describe('Integration test', () => {
      * Testnet presents a greater challenge due to the presence of old stake pool program accounts
      */
     const connection = new Connection(
-      'https://api.testnet.solana.com/',
+      'https://api.testnet.safecoin.org/',
       'confirmed',
     );
     const STAKE_POOL_PROGRAM_ADDR = new PublicKey(

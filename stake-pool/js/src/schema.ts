@@ -1,6 +1,6 @@
 import {Schema, serialize, deserializeUnchecked} from 'borsh';
 import BN from 'bn.js';
-import {Struct, Enum, PublicKey} from '@solana/web3.js';
+import {Struct, Enum, PublicKey} from '@safecoin/web3.js';
 
 export class Fee extends Struct {
   denominator: BN;

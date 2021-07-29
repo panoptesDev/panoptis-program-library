@@ -671,7 +671,7 @@ fn command_transfer(
                     println_display(
                         config,
                         format!(
-                            "  Funding recipient: {} ({} SOL)",
+                            "  Funding recipient: {} ({} SAFE)",
                             recipient_token_account,
                             lamports_to_sol(minimum_balance_for_rent_exemption)
                         ),
@@ -824,7 +824,7 @@ fn command_wrap(
     let instructions = if let Some(wrapped_sol_account) = wrapped_sol_account {
         println_display(
             config,
-            format!("Wrapping {} SOL into {}", sol, wrapped_sol_account),
+            format!("Wrapping {} SAFE into {}", sol, wrapped_sol_account),
         );
         vec![
             system_instruction::create_account(
@@ -856,7 +856,7 @@ fn command_wrap(
             }
         }
 
-        println_display(config, format!("Wrapping {} SOL into {}", sol, account));
+        println_display(config, format!("Wrapping {} SAFE into {}", sol, account));
         vec![
             system_instruction::transfer(&wallet_address, &account, lamports),
             create_associated_token_account(&config.fee_payer, &wallet_address, &native_mint::id()),
@@ -881,14 +881,14 @@ fn command_unwrap(
         let lamports = config.rpc_client.get_balance(&address)?;
         if lamports == 0 {
             if use_associated_account {
-                return Err("No wrapped SOL in associated account; did you mean to specify an auxiliary address?".to_string().into());
+                return Err("No wrapped SAFE in associated account; did you mean to specify an auxiliary address?".to_string().into());
             } else {
-                return Err(format!("No wrapped SOL in {}", address).into());
+                return Err(format!("No wrapped SAFE in {}", address).into());
             }
         }
         println_display(
             config,
-            format!("  Amount: {} SOL", lamports_to_sol(lamports)),
+            format!("  Amount: {} SAFE", lamports_to_sol(lamports)),
         );
     }
     println_display(config, format!("  Recipient: {}", &wallet_address));
@@ -1353,7 +1353,7 @@ fn main() {
                 .global(true)
                 .validator(is_url_or_moniker)
                 .help(
-                    "URL for Solana's JSON RPC or moniker (or their first letter): \
+                    "URL for Safecoin's JSON RPC or moniker (or their first letter): \
                        [mainnet-beta, testnet, devnet, localhost] \
                     Default from the configuration file."
                 ),
@@ -1769,7 +1769,7 @@ fn main() {
         )
         .subcommand(
             SubCommand::with_name("wrap")
-                .about("Wrap native SOL in a SOL token account")
+                .about("Wrap native SAFE in a SAFE token account")
                 .arg(
                     Arg::with_name("amount")
                         .validator(is_amount)
@@ -1777,7 +1777,7 @@ fn main() {
                         .takes_value(true)
                         .index(1)
                         .required(true)
-                        .help("Amount of SOL to wrap"),
+                        .help("Amount of SAFE to wrap"),
                 )
                 .arg(
                     Arg::with_name("wallet_keypair")
@@ -1786,8 +1786,8 @@ fn main() {
                         .validator(is_valid_signer)
                         .takes_value(true)
                         .help(
-                            "Specify the keypair for the wallet which will have its native SOL wrapped. \
-                             This wallet will be assigned as the owner of the wrapped SOL token account. \
+                            "Specify the keypair for the wallet which will have its native SAFE wrapped. \
+                             This wallet will be assigned as the owner of the wrapped SAFE token account. \
                              This may be a keypair file or the ASK keyword. \
                              Defaults to the client keypair."
                         ),
@@ -1796,14 +1796,14 @@ fn main() {
                     Arg::with_name("create_aux_account")
                         .takes_value(false)
                         .long("create-aux-account")
-                        .help("Wrap SOL in an auxillary account instead of associated token account"),
+                        .help("Wrap SAFE in an auxillary account instead of associated token account"),
                 )
                 .nonce_args(true)
                 .offline_args(),
         )
         .subcommand(
             SubCommand::with_name("unwrap")
-                .about("Unwrap a SOL token account")
+                .about("Unwrap a SAFE token account")
                 .arg(
                     Arg::with_name("address")
                         .validator(is_valid_pubkey)
@@ -1820,8 +1820,8 @@ fn main() {
                         .validator(is_valid_signer)
                         .takes_value(true)
                         .help(
-                            "Specify the keypair for the wallet which owns the wrapped SOL. \
-                             This wallet will receive the unwrapped SOL. \
+                            "Specify the keypair for the wallet which owns the wrapped SAFE. \
+                             This wallet will receive the unwrapped SAFE. \
                              This may be a keypair file or the ASK keyword. \
                              Defaults to the client keypair."
                         ),
@@ -1906,7 +1906,7 @@ fn main() {
                         .validator(is_valid_pubkey)
                         .value_name("REFUND_ACCOUNT_ADDRESS")
                         .takes_value(true)
-                        .help("The address of the account to receive remaining SOL [default: --owner]"),
+                        .help("The address of the account to receive remaining SAFE [default: --owner]"),
                 )
                 .arg(
                     Arg::with_name("close_authority")
@@ -2058,7 +2058,7 @@ fn main() {
         )
         .subcommand(
             SubCommand::with_name("sync-native")
-                .about("Sync a native SOL token account to its underlying lamports")
+                .about("Sync a native SAFE token account to its underlying lamports")
                 .arg(
                     owner_address_arg()
                         .index(1)

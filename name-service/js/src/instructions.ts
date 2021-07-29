@@ -1,4 +1,4 @@
-import { PublicKey, TransactionInstruction } from '@solana/web3.js';
+import { PublicKey, TransactionInstruction } from '@safecoin/web3.js';
 
 import { Numberu32, Numberu64 } from './utils';
 

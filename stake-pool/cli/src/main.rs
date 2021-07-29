@@ -26,7 +26,7 @@ use {
     solana_remote_wallet::remote_wallet::RemoteWalletManager,
     solana_sdk::{
         commitment_config::CommitmentConfig,
-        native_token::{self, Sol},
+        native_token::{self, Safe},
         signature::{Keypair, Signer},
         signers::Signers,
         system_instruction,
@@ -76,8 +76,8 @@ fn check_fee_payer_balance(config: &Config, required_balance: u64) -> Result<(),
         Err(format!(
             "Fee payer, {}, has insufficient balance: {} required, {} available",
             config.fee_payer.pubkey(),
-            Sol(required_balance),
-            Sol(balance)
+            Safe(required_balance),
+            Safe(balance)
         )
         .into())
     } else {
@@ -740,7 +740,7 @@ fn command_list(config: &Config, stake_pool_address: &Pubkey) -> CommandResult {
     println!(
         "Reserve Account: {}\tAvailable Balance: {}",
         stake_pool.reserve_stake,
-        Sol(reserve_stake.lamports - minimum_reserve_stake_balance),
+        Safe(reserve_stake.lamports - minimum_reserve_stake_balance),
     );
 
     for validator in &validator_list.validators {
@@ -759,9 +759,9 @@ fn command_list(config: &Config, stake_pool_address: &Pubkey) -> CommandResult {
                 "Vote Account: {}\tStake Account: {}\tActive Balance: {}\tTransient Stake Account: {}\tTransient Balance: {}\tLast Update Epoch: {}{}",
                 validator.vote_account_address,
                 stake_account_address,
-                Sol(validator.active_stake_lamports),
+                Safe(validator.active_stake_lamports),
                 transient_stake_account_address,
-                Sol(validator.transient_stake_lamports),
+                Safe(validator.transient_stake_lamports),
                 validator.last_update_epoch,
                 if validator.last_update_epoch != epoch_info.epoch {
                     " [UPDATE REQUIRED]"
@@ -773,7 +773,7 @@ fn command_list(config: &Config, stake_pool_address: &Pubkey) -> CommandResult {
             println!(
                 "Vote Account: {}\tBalance: {}\tLast Update Epoch: {}",
                 validator.vote_account_address,
-                Sol(validator.stake_lamports()),
+                Safe(validator.stake_lamports()),
                 validator.last_update_epoch,
             );
         }
@@ -784,7 +784,7 @@ fn command_list(config: &Config, stake_pool_address: &Pubkey) -> CommandResult {
     }
     println!(
         "Total Pool Stake: {}{}",
-        Sol(stake_pool.total_stake_lamports),
+        Safe(stake_pool.total_stake_lamports),
         if stake_pool.last_update_epoch != epoch_info.epoch {
             " [UPDATE REQUIRED]"
         } else {
@@ -1041,7 +1041,7 @@ fn command_withdraw(
 
         println!(
             "Withdrawing {}, or {} pool tokens, from stake account {}, delegated to {:?}, stake / withdraw authority {}",
-            Sol(sol_withdraw_amount),
+            Safe(sol_withdraw_amount),
             spl_token::amount_to_ui_amount(withdraw_account.pool_amount, pool_mint.decimals),
             withdraw_account.stake_address,
             withdraw_account.vote_address,
@@ -1509,7 +1509,7 @@ fn main() {
                     .validator(is_amount)
                     .value_name("AMOUNT")
                     .takes_value(true)
-                    .help("Amount in SOL to add to the validator stake account. Must be at least the rent-exempt amount for a stake plus 1 SOL for merging."),
+                    .help("Amount in SAFE to add to the validator stake account. Must be at least the rent-exempt amount for a stake plus 1 SAFE for merging."),
             )
         )
         .subcommand(SubCommand::with_name("decrease-validator-stake")
@@ -1683,7 +1683,7 @@ fn main() {
                     .value_name("STAKE_ACCOUNT_ADDRESS")
                     .takes_value(true)
                     .requires("withdraw_from")
-                    .help("Stake account to receive SOL from the stake pool. Defaults to a new stake account."),
+                    .help("Stake account to receive SAFE from the stake pool. Defaults to a new stake account."),
             )
             .arg(
                 Arg::with_name("vote_account")

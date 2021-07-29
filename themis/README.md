@@ -30,10 +30,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 ```
 
-Install the Solana command-line tools:
+Install the Safecoin command-line tools:
 
 ```bash
-curl -sSf https://raw.githubusercontent.com/solana-labs/solana/v1.4.2/install/solana-install-init.sh | sh -s - v1.4.2
+curl -sSf https://raw.githubusercontent.com/solana-labs/solana/v1.4.2/install/safecoin-install-init.sh | sh -s - v1.4.2
 export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
 ```
 
@@ -53,19 +53,19 @@ cd themis/client_ristretto
 cargo build --example tps
 ```
 
-### Configure the default Solana wallet
+### Configure the default Safecoin wallet
 
 Point to the testnet cluster (default is mainnet-beta):
 
 ```bash
-solana config set --url http://api.testnet.solana.com
+safecoin config set --url http://api.testnet.safecoin.org
 ```
 
-Create a keypair and airdrop it some SOL:
+Create a keypair and airdrop it some SAFE:
 
 ```bash
-solana-keygen new --no-passphrase
-solana airdrop 10
+safecoin-keygen new --no-passphrase
+safecoin airdrop 10
 ```
 
 ### Run the TPS example app

@@ -5,14 +5,14 @@ A basic command-line for creating and using SPL Stake Pools.  See https://spl.so
 ## Scripts for setting up a stake pool
 
 Under `./scripts`, this repo also contains some bash scripts that are useful for
-setting up your own stake pool. These scripts require the Solana CLI tool suite,
+setting up your own stake pool. These scripts require the Safecoin CLI tool suite,
 which can be downloaded by following the instructions at
 (https://docs.solana.com/cli/install-solana-cli-tools). Additionally, you must
-have a usable keypair, created at the default location using `solana-keygen new`.
+have a usable keypair, created at the default location using `safecoin-keygen new`.
 
 ### setup-local.sh
 
-Builds the stake pool program and sets up a `solana-test-validator` with some
+Builds the stake pool program and sets up a `safecoin-test-validator` with some
 new validator vote accounts.
 
 The only input it accepts is a number, for the number of vote accounts to create, e.g.:
@@ -29,10 +29,10 @@ it to fail with: `Custom program error: 0x11`. This is totally normal, and will
 not happen on a normal network.
 
 Since there is no voting activity on the test validator network, you will
-need to use the `--force` flag with `solana delegate-stake`, ie:
+need to use the `--force` flag with `safecoin delegate-stake`, ie:
 
 ```bash
-$ solana delegate-stake --force stake.json CzDy6uxLTko5Jjcdm46AozMmrARY6R2aDBagdemiBuiT
+$ safecoin delegate-stake --force stake.json CzDy6uxLTko5Jjcdm46AozMmrARY6R2aDBagdemiBuiT
 ```
 
 ### setup-stake-pool.sh

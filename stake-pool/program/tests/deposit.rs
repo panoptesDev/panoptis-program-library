@@ -230,7 +230,7 @@ async fn success() {
         pre_validator_stake_item.stake_lamports() + stake_lamports - stake_rent,
     );
 
-    // Check validator stake account actual SOL balance
+    // Check validator stake account actual SAFE balance
     let validator_stake_account = get_account(
         &mut context.banks_client,
         &validator_stake_account.stake_account,

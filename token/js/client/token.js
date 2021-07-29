@@ -13,23 +13,23 @@ import {
   Transaction,
   TransactionInstruction,
   SYSVAR_RENT_PUBKEY,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 import type {
   Connection,
   Commitment,
   Signer,
   TransactionSignature,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 
 import * as Layout from './layout';
 import {sendAndConfirmTransaction} from './util/send-and-confirm-transaction';
 
 export const TOKEN_PROGRAM_ID: PublicKey = new PublicKey(
-  'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+  'HMGr16f8Ct1Zeb9TGPypt9rPgzCkmhCQB8Not8vwiPW1',
 );
 
 export const ASSOCIATED_TOKEN_PROGRAM_ID: PublicKey = new PublicKey(
-  'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
+  'PUFQTv9BK3ax6bKPFnyjBTbVa3782mcfvb22TZovvrm',
 );
 
 const FAILED_TO_FIND_ACCOUNT = 'Failed to find account';
@@ -38,7 +38,7 @@ const INVALID_ACCOUNT_OWNER = 'Invalid account owner';
 /**
  * Unfortunately, BufferLayout.encode uses an `instanceof` check for `Buffer`
  * which fails when using `publicKey.toBuffer()` directly because the bundled `Buffer`
- * class in `@solana/web3.js` is different from the bundled `Buffer` class in this package
+ * class in `@safecoin/web3.js` is different from the bundled `Buffer` class in this package
  */
 function pubkeyToBuffer(publicKey: PublicKey): typeof Buffer {
   return Buffer.from(publicKey.toBuffer());
@@ -586,7 +586,7 @@ export class Token {
    *
    * This function sends lamports to the new account before initializing it.
    *
-   * @param connection A solana web3 connection
+   * @param connection A safecoin web3 connection
    * @param programId The token program ID
    * @param owner The owner of the new token account
    * @param payer The source of the lamports to initialize, and payer of the initialization fees.

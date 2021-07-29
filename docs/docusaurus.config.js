@@ -1,7 +1,7 @@
 module.exports = {
-  title: "Solana Program Library Docs",
+  title: "Safecoin Program Library Docs",
   tagline:
-    "Solana is an open source project implementing a new, high-performance, permissionless blockchain.",
+    "Safecoin is an open source project implementing a new, high-performance, permissionless blockchain.",
   url: "https://spl.solana.com",
   baseUrl: "/",
   favicon: "img/favicon.ico",
@@ -10,7 +10,7 @@ module.exports = {
   themeConfig: {
     navbar: {
       logo: {
-        alt: "Solana Logo",
+        alt: "Safecoin Logo",
         src: "img/logo-horizontal.svg",
         srcDark: "img/logo-horizontal-dark.svg",
       },

@@ -4,7 +4,7 @@ use solana_bpf_loader_program::{
 };
 use solana_rbpf::vm::EbpfVm;
 use solana_sdk::{
-    account::{create_account, Account as SolanaAccount},
+    account::{create_account, Account as SafecoinAccount},
     bpf_loader,
     entrypoint::SUCCESS,
     keyed_account::KeyedAccount,
@@ -33,9 +33,9 @@ fn run_program(
     parameter_accounts: &[KeyedAccount],
     instruction_data: &[u8],
 ) -> u64 {
-    let program_account = SolanaAccount {
+    let program_account = SafecoinAccount {
         data: load_program("../../target/deploy/spl_token.so"),
-        ..SolanaAccount::default()
+        ..SafecoinAccount::default()
     };
     let loader_id = bpf_loader::id();
     let mut invoke_context = MockInvokeContext::default();
@@ -71,14 +71,14 @@ fn run_program(
 fn assert_instruction_count() {
     let program_id = Pubkey::new_unique();
     let source_key = Pubkey::new_unique();
-    let source_account = SolanaAccount::new_ref(u64::MAX, Account::get_packed_len(), &program_id);
+    let source_account = SafecoinAccount::new_ref(u64::MAX, Account::get_packed_len(), &program_id);
     let destination_key = Pubkey::new_unique();
     let destination_account =
-        SolanaAccount::new_ref(u64::MAX, Account::get_packed_len(), &program_id);
+        SafecoinAccount::new_ref(u64::MAX, Account::get_packed_len(), &program_id);
     let owner_key = Pubkey::new_unique();
-    let owner_account = RefCell::new(SolanaAccount::default());
+    let owner_account = RefCell::new(SafecoinAccount::default());
     let mint_key = Pubkey::new_unique();
-    let mint_account = SolanaAccount::new_ref(0, Mint::get_packed_len(), &program_id);
+    let mint_account = SafecoinAccount::new_ref(0, Mint::get_packed_len(), &program_id);
     let rent_key = rent::id();
     let rent_account = RefCell::new(create_account(&Rent::free(), 42));
 

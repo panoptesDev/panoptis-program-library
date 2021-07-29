@@ -5,7 +5,7 @@
 Full documentation is available at https://spl.solana.com/name-service
 
 JavaScript binding allow to interact with a spl program for issuing and managing
-ownership of: domain names, Solana Pubkeys, URLs, twitter handles, arweave ids,
+ownership of: domain names, Safecoin Pubkeys, URLs, twitter handles, arweave ids,
 metadata, etc..
 
 This package provides an interface that third parties can

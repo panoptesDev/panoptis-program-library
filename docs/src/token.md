@@ -2,13 +2,13 @@
 title: Token Program
 ---
 
-A Token program on the Solana blockchain.
+A Token program on the Safecoin blockchain.
 
 This program defines a common implementation for Fungible and Non Fungible tokens.
 
 ## Background
 
-Solana's programming model and the definitions of the Solana terms used in this
+Safecoin's programming model and the definitions of the Safecoin terms used in this
 document are available at:
 
 - https://docs.solana.com/apps
@@ -51,18 +51,18 @@ The `spl-token` configuration is shared with the `solana` command-line tool.
 #### Current Configuration
 
 ```console
-$ solana config get
+$ safecoin config get
 Config File: ${HOME}/.config/solana/cli/config.yml
-RPC URL: https://api.mainnet-beta.solana.com
-WebSocket URL: wss://api.mainnet-beta.solana.com/ (computed)
+RPC URL: https://api.mainnet-beta.safecoin.org
+WebSocket URL: wss://api.mainnet-beta.safecoin.org/ (computed)
 Keypair Path: ${HOME}/.config/solana/id.json
 ```
 
 #### Cluster RPC URL
 
-See [Solana clusters](https://docs.solana.com/clusters) for cluster-specific RPC URLs
+See [Safecoin clusters](https://docs.solana.com/clusters) for cluster-specific RPC URLs
 ```console
-$ solana config set --url https://api.devnet.solana.com
+$ safecoin config set --url https://api.devnet.safecoin.org
 ```
 
 #### Default Keypair
@@ -72,21 +72,21 @@ for information on how to setup a keypair if you don't already have one.
 
 Keypair File
 ```console
-$ solana config set --keypair ${HOME}/new-keypair.json
+$ safecoin config set --keypair ${HOME}/new-keypair.json
 ```
 
 Hardware Wallet URL (See [URL spec](https://docs.solana.com/wallet-guide/hardware-wallets#specify-a-keypair-url))
 ```console
-$ solana config set --keypair usb://ledger/
+$ safecoin config set --keypair usb://ledger/
 ```
 
-#### Airdrop SOL
+#### Airdrop SAFE
 
-Creating tokens and accounts requires SOL for account rent deposits and
+Creating tokens and accounts requires SAFE for account rent deposits and
 transaction fees. If the cluster you are targeting offers a faucet, you can get
-a little SOL for testing:
+a little SAFE for testing:
 ```console
-$ solana airdrop 1
+$ safecoin airdrop 1
 ```
 
 ### Example: Creating your own fungible token
@@ -151,19 +151,19 @@ AQoKYV7tYpTrFZN6P5oUufbQKAUr9mNYGe1TTJC9wajM  0    (Aux-1*)
 AQoKYV7tYpTrFZN6P5oUufbQKAUr9mNYGe1TTJC9wajM  1    (Aux-2*)
 ```
 
-### Example: Wrapping SOL in a Token
+### Example: Wrapping SAFE in a Token
 
 ```console
 $ spl-token wrap 1
-Wrapping 1 SOL into GJTxcnA5Sydy8YRhqvHxbQ5QNsPyRKvzguodQEaShJje
+Wrapping 1 SAFE into GJTxcnA5Sydy8YRhqvHxbQ5QNsPyRKvzguodQEaShJje
 Signature: 4f4s5QVMKisLS6ihZcXXPbiBAzjnvkBcp2A7KKER7k9DwJ4qjbVsQBKv2rAyBumXC1gLn8EJQhwWkybE4yJGnw2Y
 ```
 
-To unwrap the Token back to SOL:
+To unwrap the Token back to SAFE:
 ```console
 $ spl-token unwrap GJTxcnA5Sydy8YRhqvHxbQ5QNsPyRKvzguodQEaShJje
 Unwrapping GJTxcnA5Sydy8YRhqvHxbQ5QNsPyRKvzguodQEaShJje
-  Amount: 1 SOL
+  Amount: 1 SAFE
   Recipient: vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg
 Signature: f7opZ86ZHKGvkJBQsJ8Pk81v8F3v1VUfyd4kFs4CABmfTnSZK5BffETznUU3tEWvzibgKJASCf7TUpDmwGi8Rmh
 ```
@@ -171,7 +171,7 @@ Signature: f7opZ86ZHKGvkJBQsJ8Pk81v8F3v1VUfyd4kFs4CABmfTnSZK5BffETznUU3tEWvzibgK
 ### Example: Transferring tokens to another user
 First the receiver uses `spl-token create-account` to create their associated
 token account for the Token type.  Then the receiver obtains their wallet
-address by running `solana address` and provides it to the sender.
+address by running `safecoin address` and provides it to the sender.
 
 The sender then runs:
 ```console
@@ -188,7 +188,7 @@ Signature: 5a3qbvoJQnTAxGPHCugibZTbSu7xuTgkxvF4EJupRjRXGgZZrnWFmKzfEzcqKF2ogCaF4
 If the receiver does not yet have an associated token account, the sender may
 choose to fund the receiver's account.
 
-The receiver obtains their wallet address by running `solana address` and provides it to the sender.
+The receiver obtains their wallet address by running `safecoin address` and provides it to the sender.
 
 The sender then runs to fund the receiver's associated token account, at the
 sender's expense, and then transfers 50 tokens into it:
@@ -198,7 +198,7 @@ Transfer 50 tokens
   Sender: 7UX2i7SucgLMQcfZ75s3VXmZZY4YRUyJN9X1RgfMoDUi
   Recipient: vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg
   Recipient associated token account: F59618aQB8r6asXeMcB9jWuY6NEx1VduT9yFo1GTi1ks
-  Funding recipient: F59618aQB8r6asXeMcB9jWuY6NEx1VduT9yFo1GTi1ks (0.00203928 SOL)
+  Funding recipient: F59618aQB8r6asXeMcB9jWuY6NEx1VduT9yFo1GTi1ks (0.00203928 SAFE)
 
 Signature: 5a3qbvoJQnTAxGPHCugibZTbSu7xuTgkxvF4EJupRjRXGgZZrnWFmKzfEzcqKF2ogCaF4QKVbAtuFx7xGwrDUcGd
 ```
@@ -317,7 +317,7 @@ First create keypairs to act as the multisig signer-set. In reality, these can
 be any supported signer, like: a Ledger hardware wallet, a keypair file, or
 a paper wallet. For convenience, keypair files will be used in this example.
 ```console
-$ for i in $(seq 3); do solana-keygen new --no-passphrase -so "signer-${i}.json"; done
+$ for i in $(seq 3); do safecoin-keygen new --no-passphrase -so "signer-${i}.json"; done
 Wrote new keypair to signer-1.json
 Wrote new keypair to signer-2.json
 Wrote new keypair to signer-3.json
@@ -326,7 +326,7 @@ Wrote new keypair to signer-3.json
 In order to create the multisig account, the public keys of the signer-set must
 be collected.
 ```console
-$ for i in $(seq 3); do SIGNER="signer-${i}.json"; echo "$SIGNER: $(solana-keygen pubkey "$SIGNER")"; done
+$ for i in $(seq 3); do SIGNER="signer-${i}.json"; echo "$SIGNER: $(safecoin-keygen pubkey "$SIGNER")"; done
 signer-1.json: BzWpkuRrwXHq4SSSFHa8FJf6DRQy4TaeoXnkA89vTgHZ
 signer-2.json: DhkUfKgfZ8CF6PAGKwdABRL1VqkeNrTSRx8LZfpPFVNY
 signer-3.json: D7ssXHrZJjfpZXsmDf8RwfPxe1BMMMmP1CtmX3WojPmG
@@ -412,7 +412,7 @@ and multisig signer-set keypair filenames as the online example, as well as a no
 account that we create here:
 
 ```console
-$ solana-keygen new -o nonce-keypair.json
+$ safecoin-keygen new -o nonce-keypair.json
 ...
 ======================================================================
 pubkey: Fjyud2VXixk2vCs4DkBpfpsq48d81rbEzh6deKt7WvPj
@@ -420,14 +420,14 @@ pubkey: Fjyud2VXixk2vCs4DkBpfpsq48d81rbEzh6deKt7WvPj
 ```
 
 ```console
-$ solana create-nonce-account nonce-keypair.json 1
+$ safecoin create-nonce-account nonce-keypair.json 1
 Signature: 3DALwrAAmCDxqeb4qXZ44WjpFcwVtgmJKhV4MW5qLJVtWeZ288j6Pzz1F4BmyPpnGLfx2P8MEJXmqPchX5y2Lf3r
 ```
 
 ```console
-$ solana nonce-account Fjyud2VXixk2vCs4DkBpfpsq48d81rbEzh6deKt7WvPj
-Balance: 0.01 SOL
-Minimum Balance Required: 0.00144768 SOL
+$ safecoin nonce-account Fjyud2VXixk2vCs4DkBpfpsq48d81rbEzh6deKt7WvPj
+Balance: 0.01 SAFE
+Minimum Balance Required: 0.00144768 SAFE
 Nonce blockhash: 6DPt2TfFBG7sR4Hqu16fbMXPj8ddHKkbU4Y3EEEWrC2E
 Fee: 5000 lamports per signature
 Authority: 5hbZyJ3KRuFvdy5QBxvE9KwK17hzkAUkQHZTxPbiWffE
@@ -566,13 +566,13 @@ Additionally the versatile `getProgramAccounts` JSON RPC method can be employed 
 
 To find all token accounts for the `TESTpKgj42ya3st2SQTKiANjTBmncQSCqLAZGcSPLGM` mint:
 ```
-curl http://api.mainnet-beta.solana.com -X POST -H "Content-Type: application/json" -d '
+curl http://api.mainnet-beta.safecoin.org -X POST -H "Content-Type: application/json" -d '
   {
     "jsonrpc": "2.0",
     "id": 1,
     "method": "getProgramAccounts",
     "params": [
-      "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "HMGr16f8Ct1Zeb9TGPypt9rPgzCkmhCQB8Not8vwiPW1",
       {
         "encoding": "jsonParsed",
         "filters": [
@@ -602,13 +602,13 @@ address within each token account.
 
 Find all token accounts owned by the `vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg` user:
 ```
-curl http://api.mainnet-beta.solana.com -X POST -H "Content-Type: application/json" -d '
+curl http://api.mainnet-beta.safecoin.org -X POST -H "Content-Type: application/json" -d '
   {
     "jsonrpc": "2.0",
     "id": 1,
     "method": "getProgramAccounts",
     "params": [
-      "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "HMGr16f8Ct1Zeb9TGPypt9rPgzCkmhCQB8Not8vwiPW1",
       {
         "encoding": "jsonParsed",
         "filters": [
@@ -644,9 +644,9 @@ Account, which means that the total supply of a particular token type is equal
 to the balances of all the associated Accounts.
 
 It's important to note that the `InitializeMint` instruction does not require
-the Solana account being initialized also be a signer. The `InitializeMint`
+the Safecoin account being initialized also be a signer. The `InitializeMint`
 instruction should be atomically processed with the system instruction that
-creates the Solana account by including both instructions in the same
+creates the Safecoin account by including both instructions in the same
 transaction.
 
 Once a Mint is initialized, the `mint_authority` can create new tokens using the
@@ -669,9 +669,9 @@ An Account's owner may transfer ownership of an account to another using the
 `SetAuthority` instruction.
 
 It's important to note that the `InitializeAccount` instruction does not require
-the Solana account being initialized also be a signer. The `InitializeAccount`
+the Safecoin account being initialized also be a signer. The `InitializeAccount`
 instruction should be atomically processed with the system instruction that
-creates the Solana account by including both instructions in the same
+creates the Safecoin account by including both instructions in the same
 transaction.
 
 ### Transferring tokens
@@ -713,9 +713,9 @@ the set of N public keys that are valid and the number M of those N that must be
 present as instruction signers for the authority to be legitimate.
 
 It's important to note that the `InitializeMultisig` instruction does not
-require the Solana account being initialized also be a signer. The
+require the Safecoin account being initialized also be a signer. The
 `InitializeMultisig` instruction should be atomically processed with the system
-instruction that creates the Solana account by including both instructions in
+instruction that creates the Safecoin account by including both instructions in
 the same transaction.
 
 ### Freezing accounts
@@ -728,39 +728,39 @@ to change a Mint's `freeze_authority`.  If a Mint's `freeze_authority` is set to
 `None` then account freezing and thawing is permanently disabled and all
 currently frozen accounts will also stay frozen permanently.
 
-### Wrapping SOL
+### Wrapping SAFE
 
-The Token Program can be used to wrap native SOL. Doing so allows native SOL to
+The Token Program can be used to wrap native SAFE. Doing so allows native SAFE to
 be treated like any other Token program token type and can be useful when being
 called from other programs that interact with the Token Program's interface.
 
-Accounts containing wrapped SOL are associated with a specific Mint called the
+Accounts containing wrapped SAFE are associated with a specific Mint called the
 "Native Mint" using the public key
 `So11111111111111111111111111111111111111112`.
 
 These accounts have a few unique behaviors
 
-- `InitializeAccount` sets the balance of the initialized Account to the SOL
-  balance of the Solana account being initialized, resulting in a token balance
-  equal to the SOL balance.
+- `InitializeAccount` sets the balance of the initialized Account to the SAFE
+  balance of the Safecoin account being initialized, resulting in a token balance
+  equal to the SAFE balance.
 - Transfers to and from not only modify the token balance but also transfer an
-  equal amount of SOL from the source account to the destination account.
+  equal amount of SAFE from the source account to the destination account.
 - Burning is not supported
 - When closing an Account the balance may be non-zero.
 
-The Native Mint supply will always report 0, regardless of how much SOL is currently wrapped.
+The Native Mint supply will always report 0, regardless of how much SAFE is currently wrapped.
 
 ### Rent-exemption
 
 To ensure a reliable calculation of supply, a consistency valid Mint, and
-consistently valid Multisig accounts all Solana accounts holding an Account,
-Mint, or Multisig must contain enough SOL to be considered [rent
+consistently valid Multisig accounts all Safecoin accounts holding an Account,
+Mint, or Multisig must contain enough SAFE to be considered [rent
 exempt](https://docs.solana.com/implemented-proposals/rent)
 
 ### Closing accounts
 
 An account may be closed using the `CloseAccount` instruction. When closing an
-Account, all remaining SOL will be transferred to another Solana account
+Account, all remaining SAFE will be transferred to another Safecoin account
 (doesn't have to be associated with the Token Program). Non-native Accounts must
 have a balance of zero to be closed.
 
@@ -769,8 +769,8 @@ An NFT is simply a token type where only a single token has been minted.
 
 ## Wallet Integration Guide
 This section describes how to integrate SPL Token support into an existing
-wallet supporting native SOL.  It assumes a model whereby the user has a single
-system account as their **main wallet address** that they send and receive SOL
+wallet supporting native SAFE.  It assumes a model whereby the user has a single
+system account as their **main wallet address** that they send and receive SAFE
 from.
 
 Although all SPL Token accounts do have their own address on-chain, there's no
@@ -798,7 +798,7 @@ section for suggestions on how the wallet should clean up ancillary token accoun
 
 ### Associated Token Account
 Before the user can receive tokens, their associated token account must be created
-on-chain, requiring a small amount of SOL to mark the account as rent-exempt.
+on-chain, requiring a small amount of SAFE to mark the account as rent-exempt.
 
 There's no restriction on who can create a user's associated token account.  It
 could either be created by the wallet on behalf of the user or funded by a 3rd
@@ -820,7 +820,7 @@ receive SPL Tokens of a certain type to:
 
 The wallet should provide a UI that allow the users to "add a token".
 The user selects the kind of token, and is presented with information about how
-much SOL it will cost to add the token.
+much SAFE it will cost to add the token.
 
 Upon confirmation, the wallet creates the associated token type as the described
 [here](associated-token-account.md#creating-an-associated-token-account).
@@ -853,7 +853,7 @@ then:
    wallet should create the recipient's associated token account as described
    [here](associated-token-account.md#creating-an-associated-token-account).
    The sender's wallet may choose to inform the user that as a result of account
-   creation the transfer will require more SOL than normal.
+   creation the transfer will require more SAFE than normal.
    However a wallet that chooses to not support creating the recipient's
    associated token account at this time should present a message to the user with enough
    information to permit them to find a workaround (such as transferring the
@@ -878,9 +878,9 @@ Wallets should empty ancillary token accounts as quickly as practical by
 transferring into the user's associated token account.  This effort serves two
 purposes:
 * If the user is the close authority for the ancillary account, the wallet can
-  reclaim SOL for the user by closing the account.
+  reclaim SAFE for the user by closing the account.
 * If the ancillary account was funded by a 3rd party, once the account is
-  emptied that 3rd party may close the account and reclaim the SOL.
+  emptied that 3rd party may close the account and reclaim the SAFE.
 
 One natural time to garbage collect ancillary token accounts is when the user
 next sends tokens.  The additional instructions to do so can be added to the

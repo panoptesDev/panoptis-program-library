@@ -2,7 +2,7 @@
 title: Token-Lending Program
 ---
 
-A lending protocol for the Token program on the Solana blockchain inspired by Aave and Compound.
+A lending protocol for the Token program on the Safecoin blockchain inspired by Aave and Compound.
 
 
 ### On-Chain Programs

@@ -31,7 +31,7 @@
     "build": "tsc && tsc -p tsconfig.browser.json && npm run generate:flow",
     "prepare": "npm run build",
     "start": "ts-node cli/main.ts",
-    "start-with-test-validator": "start-server-and-test 'solana-test-validator --bpf-program SwaPpA9LAaLfeLi3a68M4DjnLqgtticKg6CnyNwgAC8 ../../target/deploy/spl_token_swap.so --reset --quiet' http://localhost:8899/health start",
+    "start-with-test-validator": "start-server-and-test 'safecoin-test-validator --bpf-program 6RWe1TGwvojnbAynyWrHzm3GgHf7AmX7kLQTJG7vHCfb ../../target/deploy/spl_token_swap.so --reset --quiet' http://localhost:8328/health start",
     "lint": "npm run pretty && eslint .",
     "lint:fix": "npm run pretty:fix && eslint . --fix",
     "generate:flow": "flowgen dist/index.d.ts -o dist/module.flow.js",
@@ -46,7 +46,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "@solana/web3.js": "^1.10.0",
+    "@safecoin/web3.js": "^1.10.0",
     "bn.js": "^5.1.3",
     "buffer-layout": "^1.2.0",
     "dotenv": "10.0.0",

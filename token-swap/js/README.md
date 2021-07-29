@@ -8,14 +8,14 @@ The Token-swap JavaScript library comprises:
 
 ## Getting Started
 
-First fetch the npm dependencies, including `@solana/web3.js`, by running:
+First fetch the npm dependencies, including `@safecoin/web3.js`, by running:
 ```sh
 $ npm install
 ```
 
 ### Select a Network
 
-The client connects to a local Solana cluster by default.
+The client connects to a local Safecoin cluster by default.
 
 To enable on-chain program logs, set the `RUST_LOG` environment variable:
 
@@ -23,13 +23,13 @@ To enable on-chain program logs, set the `RUST_LOG` environment variable:
 $ export RUST_LOG=solana_runtime::native_loader=trace,solana_runtime::system_instruction_processor=trace,solana_runtime::bank=debug,solana_bpf_loader=debug,solana_rbpf=debug
 ```
 
-To start a local Solana cluster run:
+To start a local Safecoin cluster run:
 ```bash
 $ npm run localnet:update
 $ npm run localnet:up
 ```
 
-Solana cluster logs are available with:
+Safecoin cluster logs are available with:
 ```bash
 $ npm run localnet:logs
 ```
@@ -49,11 +49,11 @@ $ npm run build:program
 $ npm run start
 ```
 
-## Pointing to a public Solana cluster
+## Pointing to a public Safecoin cluster
 
-Solana maintains three public clusters:
+Safecoin maintains three public clusters:
 - `devnet` - Development cluster with airdrops enabled
-- `testnet` - Tour De Sol test cluster without airdrops enabled
+- `testnet` - Tour De Safe test cluster without airdrops enabled
 - `mainnet-beta` -  Main cluster
 
 Use npm scripts to configure which cluster.

@@ -29,7 +29,7 @@ general.
 
 ## Background
 
-Solana's programming model and the definitions of the Solana terms used in this
+Safecoin's programming model and the definitions of the Safecoin terms used in this
 document are available at:
 
 - https://docs.solana.com/apps
@@ -57,11 +57,11 @@ Rust function may be used by clients to derive the wallet's associated token add
 
 The associated account address can be derived in TypeScript with:
 ```ts
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@safecoin/web3.js';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 
 const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID: PublicKey = new PublicKey(
-  'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
+  'PUFQTv9BK3ax6bKPFnyjBTbVa3782mcfvb22TZovvrm',
 );
 
 async function findAssociatedTokenAddress(

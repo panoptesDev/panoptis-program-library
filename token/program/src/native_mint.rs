@@ -1,9 +1,9 @@
 //! The Mint that represents the native token
 
-/// There are 10^9 lamports in one SOL
+/// There are 10^9 lamports in one SAFE
 pub const DECIMALS: u8 = 9;
 
-// The Mint for native SOL Token accounts
+// The Mint for native SAFE Token accounts
 solana_program::declare_id!("So11111111111111111111111111111111111111112");
 
 #[cfg(test)]

@@ -4,12 +4,12 @@
 https://travis-ci.org/solana-labs/solana-program-library.svg?branch=master
 [travis-url]: https://travis-ci.org/solana-labs/solana-program-library
 
-# Solana Program Library
+# Safecoin Program Library
 
-The Solana Program Library (SPL) is a collection of on-chain programs targeting
+The Safecoin Program Library (SPL) is a collection of on-chain programs targeting
 the [Sealevel parallel
 runtime](https://medium.com/solana-labs/sealevel-parallel-processing-thousands-of-smart-contracts-d814b378192).
-These programs are tested against Solana's implementation of Sealevel,
+These programs are tested against Safecoin's implementation of Sealevel,
 solana-runtime, and deployed to its mainnet.  As others implement Sealevel, we
 will graciously accept patches to ensure the programs here are portable across
 all implementations.
@@ -21,7 +21,7 @@ Full documentation is available at https://spl.solana.com
 ### Environment Setup
 
 1. Install the latest Rust stable from https://rustup.rs/
-2. Install Solana v1.6.1 or later from https://docs.solana.com/cli/install-solana-cli-tools
+2. Install Safecoin v1.6.1 or later from https://docs.solana.com/cli/install-solana-cli-tools
 3. Install the `libudev` development package for your distribution (`libudev-dev` on Debian-derived distros, `libudev-devel` on Redhat-derived).
 
 ### Build
@@ -31,7 +31,7 @@ The normal cargo build is available for building programs against your host mach
 $ cargo build
 ```
 
-To build a specific program, such as SPL Token, for the Solana BPF target:
+To build a specific program, such as SPL Token, for the Safecoin BPF target:
 ```
 $ cd token/program
 $ cargo build-bpf
@@ -115,7 +115,7 @@ investment.
 Any content produced by SF or developer resources that SF provides, are
 for educational and inspiration purposes only. SF does not encourage,
 induce or sanction the deployment, integration or use of any such
-applications (including the code comprising the Solana blockchain
+applications (including the code comprising the Safecoin blockchain
 protocol) in violation of applicable laws or regulations and hereby
 prohibits any such deployment, integration or use. This includes use of
 any such applications by the reader (a) in violation of export control
@@ -132,15 +132,15 @@ prohibit U.S. persons (and other persons that are subject to such laws)
 from transacting with persons in certain countries and territories or
 that are on the SDN list. As a project based primarily on open-source
 software, it is possible that such sanctioned persons may nevertheless
-bypass prohibitions, obtain the code comprising the Solana blockchain
+bypass prohibitions, obtain the code comprising the Safecoin blockchain
 protocol (or other project code or applications) and deploy, integrate,
 or otherwise use it. Accordingly, there is a risk to individuals that
-other persons using the Solana blockchain protocol may be sanctioned
+other persons using the Safecoin blockchain protocol may be sanctioned
 persons and that transactions with such persons would be a violation of
 U.S. export controls and sanctions law. This risk applies to
 individuals, organizations, and other ecosystem participants that
-deploy, integrate, or use the Solana blockchain protocol code directly
-(e.g., as a node operator), and individuals that transact on the Solana
+deploy, integrate, or use the Safecoin blockchain protocol code directly
+(e.g., as a node operator), and individuals that transact on the Safecoin
 blockchain through light clients, third party interfaces, and/or wallet
 software.
 

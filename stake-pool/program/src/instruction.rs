@@ -78,14 +78,14 @@ pub enum StakePoolInstruction {
     ///   (Staker only) Adds stake account delegated to validator to the pool's
     ///   list of managed validators.
     ///
-    ///   The stake account must have the rent-exempt amount plus at least 1 SOL,
-    ///   and at most 1.001 SOL.
+    ///   The stake account must have the rent-exempt amount plus at least 1 SAFE,
+    ///   and at most 1.001 SAFE.
     ///
-    ///   Once we delegate even 1 SOL, it will accrue rewards one epoch later,
-    ///   so we'll have more than 1 active SOL at this point.
+    ///   Once we delegate even 1 SAFE, it will accrue rewards one epoch later,
+    ///   so we'll have more than 1 active SAFE at this point.
     ///   At 10% annualized rewards, 1 epoch of 2 days will accrue
-    ///   0.000547945 SOL, so we check that it is at least 1 SOL, and at most
-    ///   1.001 SOL.
+    ///   0.000547945 SAFE, so we check that it is at least 1 SAFE, and at most
+    ///   1.001 SAFE.
     ///
     ///   0. `[w]` Stake pool
     ///   1. `[s]` Staker
@@ -100,7 +100,7 @@ pub enum StakePoolInstruction {
 
     ///   (Staker only) Removes validator from the pool
     ///
-    ///   Only succeeds if the validator stake account has the minimum of 1 SOL
+    ///   Only succeeds if the validator stake account has the minimum of 1 SAFE
     ///   plus the rent-exempt amount.
     ///
     ///   0. `[w]` Stake pool
@@ -148,7 +148,7 @@ pub enum StakePoolInstruction {
     /// will do the work of merging once it's ready.
     ///
     /// This instruction only succeeds if the transient stake account does not exist.
-    /// The minimum amount to move is rent-exemption plus 1 SOL in order to avoid
+    /// The minimum amount to move is rent-exemption plus 1 SAFE in order to avoid
     /// issues on credits observed when merging active stakes later.
     ///
     ///  0. `[]` Stake pool
@@ -175,7 +175,7 @@ pub enum StakePoolInstruction {
     /// stake pool
     ///
     /// In order to avoid users abusing the stake pool as a free conversion
-    /// between SOL staked on different validators, the staker can force all
+    /// between SAFE staked on different validators, the staker can force all
     /// deposits and/or withdraws to go to one chosen account, or unset that account.
     ///
     /// 0. `[w]` Stake pool
@@ -259,9 +259,9 @@ pub enum StakePoolInstruction {
 
     ///   Withdraw the token from the pool at the current ratio.
     ///
-    ///   Succeeds if the stake account has enough SOL to cover the desired amount
+    ///   Succeeds if the stake account has enough SAFE to cover the desired amount
     ///   of pool tokens, and if the withdrawal keeps the total staked amount
-    ///   above the minimum of rent-exempt amount + 1 SOL.
+    ///   above the minimum of rent-exempt amount + 1 SAFE.
     ///
     ///   A validator stake account can be withdrawn from freely, and the reserve
     ///   can only be drawn from if there is no active stake left, where all

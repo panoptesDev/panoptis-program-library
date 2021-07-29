@@ -1,7 +1,7 @@
 // @flow
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import {Keypair, PublicKey} from '@solana/web3.js';
+import {Keypair, PublicKey} from '@safecoin/web3.js';
 
 import {ASSOCIATED_TOKEN_PROGRAM_ID, Token, TOKEN_PROGRAM_ID} from '../client/token';
 

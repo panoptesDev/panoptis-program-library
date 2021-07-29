@@ -6769,8 +6769,8 @@ mod tests {
         let mut pool_account = accounts.pool_token_account.clone();
 
         // WithdrawAllTokenTypes will not take all token A and B, since their
-        // ratio is unbalanced.  It will try to take 1_500_000_000 worth of
-        // each token, which means 1_500_000_000 token A, and 750 token B.
+        // ratio is unbalanced.  It will try to take 1_33_370_166 worth of
+        // each token, which means 1_33_370_166 token A, and 750 token B.
         // With no slippage, this will leave 250 token B in the pool.
         assert_eq!(
             Err(SwapError::ExceededSlippage.into()),

@@ -1,4 +1,4 @@
-import { PublicKey, SYSVAR_CLOCK_PUBKEY, TransactionInstruction } from '@solana/web3.js';
+import { PublicKey, SYSVAR_CLOCK_PUBKEY, TransactionInstruction } from '@safecoin/web3.js';
 import { struct, u8 } from 'buffer-layout';
 import { LENDING_PROGRAM_ID } from '../constants';
 import { LendingInstruction } from './instruction';

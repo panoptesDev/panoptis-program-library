@@ -2,7 +2,7 @@
 title: Token Swap Program
 ---
 
-A Uniswap-like exchange for the Token program on the Solana blockchain,
+A Uniswap-like exchange for the Token program on the Safecoin blockchain,
 implementing multiple automated market maker (AMM) curves.
 
 Here is some important developer information regarding the program deployed on devnet,
@@ -10,7 +10,7 @@ testnet, and mainnet-beta:
 
 | Information | Account Address |
 | --- | --- |
-| Token Swap Program | `SwaPpA9LAaLfeLi3a68M4DjnLqgtticKg6CnyNwgAC8` |
+| Token Swap Program | `6RWe1TGwvojnbAynyWrHzm3GgHf7AmX7kLQTJG7vHCfb` |
 | Fee Owner | `HfoTxFR1Tm6kGmWgYWD6J7YHVy1UwqSULUGVLXkJqaKN` |
 
 Check out
@@ -38,7 +38,7 @@ excellent documentation and whitepapers.
 
 ## Background
 
-Solana's programming model and the definitions of the Solana terms used in this
+Safecoin's programming model and the definitions of the Safecoin terms used in this
 document are available at:
 
 - https://docs.solana.com/apps
@@ -68,7 +68,7 @@ Note that each instruction has a simple code example that can be found in the
 ### Creating a new token swap pool
 
 The creation of a pool showcases the account, instruction, and authorization
-models on Solana, which can be very different compared to other blockchains.
+models on Safecoin, which can be very different compared to other blockchains.
 
 Initialization of a pool between two token types, which we'll call "A" 
 and "B" for simplicity, requires the following accounts:
@@ -112,7 +112,7 @@ the `swap` instruction.  The swap instruction transfers tokens from a user's sou
 account into the swap's source token account, and then transfers tokens from
 its destination token account into the user's destination token account.
 
-Since Solana programs require all accounts to be declared in the instruction,
+Since Safecoin programs require all accounts to be declared in the instruction,
 users need to gather all account information from the pool state account:
 the token A and B accounts, pool token mint, and fee account.
 
@@ -209,10 +209,10 @@ price is always the same.
 
 Constant price curves are most useful for fixed offerings of new tokens that
 explicitly should not have market dynamics. For example, a decentralized
-game creator wants to sell new "SOLGAME" tokens to be used in their
-game, so they create a constant price swap of 2 USDC per SOLGAME, and supply all
-of the SOLGAME tokens at swap creation. Users can go to the swap and purchase all
-of the tokens they want and not worry about the market making SOLGAME tokens too
+game creator wants to sell new "SAFEGAME" tokens to be used in their
+game, so they create a constant price swap of 2 USDC per SAFEGAME, and supply all
+of the SAFEGAME tokens at swap creation. Users can go to the swap and purchase all
+of the tokens they want and not worry about the market making SAFEGAME tokens too
 expensive.
 
 ### Stable (under construction)
@@ -251,27 +251,27 @@ constant price curve, but the key difference is that the offset curve captures
 normal market dynamics, in that the offered token price will increase as it is
 bought.
 
-For example, a decentralized betting application creator wants to sell new "SOLBET"
+For example, a decentralized betting application creator wants to sell new "SAFEBET"
 tokens on the market in exchange for USDC, and they believe each token is worth
-at least 4 USDC.  They create a pool between SOLBET and USDC, funding
-one side with 1,000 SOLBET, and the other side with 0 USDC, but an offset
+at least 4 USDC.  They create a pool between SAFEBET and USDC, funding
+one side with 1,000 SAFEBET, and the other side with 0 USDC, but an offset
 of 4,000 USDC.
 
-If a trader tries to buy SOLBET with 40 USDC, the invariant is calculated 
+If a trader tries to buy SAFEBET with 40 USDC, the invariant is calculated 
 with the offset:
 
 ```
-(SOLBET_total) * (USDC_total + USDC_offset) = invariant
+(SAFEBET_total) * (USDC_total + USDC_offset) = invariant
 1,000 * (0 + 4,000) = 4,000,000
 
-(SOLBET_total - SOLBET_out) * (USDC_total + USDC_offset + USDC_in) = invariant
-SOLBET_out = 9.901
+(SAFEBET_total - SAFEBET_out) * (USDC_total + USDC_offset + USDC_in) = invariant
+SAFEBET_out = 9.901
 ```
 
-The trader received 9.901 SOLBET for 40 USDC, so the price per SOLBET was
-roughly 4.04, slightly higher than the minimum of 4 USDC per SOLBET.
+The trader received 9.901 SAFEBET for 40 USDC, so the price per SAFEBET was
+roughly 4.04, slightly higher than the minimum of 4 USDC per SAFEBET.
 
-Conversely, if a trader tries to buy USDC with SOLBET immediately after creation,
+Conversely, if a trader tries to buy USDC with SAFEBET immediately after creation,
 it will fail because there is no USDC actually present in the pool.
 
 ## Testing

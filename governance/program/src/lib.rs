@@ -1,5 +1,5 @@
 #![deny(missing_docs)]
-//! A Governance program for the Solana blockchain.
+//! A Governance program for the Safecoin blockchain.
 
 pub mod entrypoint;
 pub mod error;

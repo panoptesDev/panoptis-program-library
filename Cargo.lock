@@ -1353,7 +1353,7 @@ dependencies = [
 name = "honggfuzz"
 version = "0.5.52"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ead88897bcad1c396806d6ccba260a0363e11da997472e9e19ab9889969083a2"
+checksum = "ead88897bcad1c396806d6ccba260a0363e11da997472e9e19ab9832869083a2"
 dependencies = [
  "arbitrary",
  "lazy_static",
@@ -3162,7 +3162,7 @@ dependencies = [
  "serde_json",
  "solana-account-decoder",
  "solana-clap-utils",
- "solana-faucet",
+ "safecoin-faucet",
  "solana-net-utils",
  "solana-sdk",
  "solana-transaction-status",
@@ -3215,7 +3215,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-faucet"
+name = "safecoin-faucet"
 version = "1.7.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f21ae04e39fff785adfa3e12d87d5979c2fe41e7c3dee85c5524b1a6152c7f78"

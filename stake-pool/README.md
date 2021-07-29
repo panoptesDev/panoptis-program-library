@@ -1,6 +1,6 @@
 # stake-pool program
 
-A work-in-progress program for pooling together SOL to be staked by an off-chain
+A work-in-progress program for pooling together SAFE to be staked by an off-chain
 agent running SoM (Stake-o-Matic).
 
 Each SoM needs at least one pool.  Users deposit stakes into the SoM pool

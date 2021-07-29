@@ -2,19 +2,19 @@
 title: Stake Pool Program
 ---
 
-A program for pooling together SOL to be staked by an off-chain agent running
+A program for pooling together SAFE to be staked by an off-chain agent running
 a Delegation Bot which redistributes the stakes across the network and tries
 to maximize censorship resistance and rewards.
 
 ## Overview
 
-SOL token holders can earn rewards and help secure the network by staking tokens
+SAFE token holders can earn rewards and help secure the network by staking tokens
 to one or more validators. Rewards for staked tokens are based on the current
-inflation rate, total number of SOL staked on the network, and an individual
+inflation rate, total number of SAFE staked on the network, and an individual
 validator’s uptime and commission (fee).
 
 Stake pools are an alternative method of earning staking rewards. This on-chain
-program pools together SOL to be staked by a staker, allowing SOL holders to
+program pools together SAFE to be staked by a staker, allowing SAFE holders to
 stake and earn rewards without managing stakes.
 
 Additional information regarding staking and stake programming is available at:
@@ -28,7 +28,7 @@ This document is intended for the main actors of the stake pool system:
 
 * manager: creates and manages the stake pool, earns fees, can update the fee, staker, and manager
 * staker: adds and removes validators to the pool, rebalances stake among validators
-* user: provides staked SOL into an existing stake pool
+* user: provides staked SAFE into an existing stake pool
 
 In its current iteration, the stake pool only processes totally active stakes.
 Deposits must come from fully active stakes, and withdrawals return a fully
@@ -36,7 +36,7 @@ active stake account.
 
 This means that stake pool managers, stakers, and users must be comfortable with
 creating and delegating stakes, which are more advanced operations than sending and
-receiving SPL tokens and SOL. Additional information on stake operations are
+receiving SPL tokens and SAFE. Additional information on stake operations are
 available at:
 
 - https://docs.solana.com/cli/delegate-stake
@@ -67,13 +67,13 @@ The stake pool staker can add and remove validators, or rebalance the pool by
 decreasing the stake on a validator, waiting an epoch to move it into the stake
 pool's reserve account, then increasing the stake on another validator.
 
-The staker operation to add a new validator requires roughly 1.003 SOL to create
+The staker operation to add a new validator requires roughly 1.003 SAFE to create
 the stake account on a validator, so the stake pool staker will need liquidity
 on hand to fully manage the pool stakes.
 
 ## Background
 
-Solana's programming model and the definitions of the Solana terms used in this
+Safecoin's programming model and the definitions of the Safecoin terms used in this
 document are available at:
 
 - https://docs.solana.com/apps
@@ -104,18 +104,18 @@ The `spl-stake-pool` configuration is shared with the `solana` command-line tool
 #### Current Configuration
 
 ```console
-solana config get
+safecoin config get
 Config File: ${HOME}/.config/solana/cli/config.yml
-RPC URL: https://api.mainnet-beta.solana.com
-WebSocket URL: wss://api.mainnet-beta.solana.com/ (computed)
+RPC URL: https://api.mainnet-beta.safecoin.org
+WebSocket URL: wss://api.mainnet-beta.safecoin.org/ (computed)
 Keypair Path: ${HOME}/.config/solana/id.json
 ```
 
 #### Cluster RPC URL
 
-See [Solana clusters](https://docs.solana.com/clusters) for cluster-specific RPC URLs
+See [Safecoin clusters](https://docs.solana.com/clusters) for cluster-specific RPC URLs
 ```console
-solana config set --url https://api.devnet.solana.com
+safecoin config set --url https://api.devnet.safecoin.org
 ```
 
 #### Default Keypair
@@ -125,24 +125,24 @@ for information on how to setup a keypair if you don't already have one.
 
 Keypair File
 ```console
-solana config set --keypair ${HOME}/new-keypair.json
+safecoin config set --keypair ${HOME}/new-keypair.json
 ```
 
 Hardware Wallet URL (See [URL spec](https://docs.solana.com/wallet-guide/hardware-wallets#specify-a-keypair-url))
 ```console
-solana config set --keypair usb://ledger/
+safecoin config set --keypair usb://ledger/
 ```
 
 #### Run Locally
 
 If you would like to test a stake pool locally without having to wait for stakes
 to activate and deactivate, you can run the stake pool locally using the
-`solana-test-validator` tool with shorter epochs, and pulling the current program
+`safecoin-test-validator` tool with shorter epochs, and pulling the current program
 from devnet, testnet, or mainnet.
 
 ```console
-$ solana-test-validator -c SPoo1xuN9wGpxNjGnPNbRPtpQ7mHgKM8d9BeFC549Jy -c GAm4m8ToXFMW6kT3DwYbT4QPDj2RMi744SjXUHm5szH3 --url devnet --slots-per-epoch 32
-$ solana config set --url http://127.0.0.1:8899
+$ safecoin-test-validator -c SPoo1xuN9wGpxNjGnPNbRPtpQ7mHgKM8d9BeFC549Jy -c GAm4m8ToXFMW6kT3DwYbT4QPDj2RMi744SjXUHm5szH3 --url devnet --slots-per-epoch 32
+$ safecoin config set --url http://127.0.0.1:8328
 ```
 
 ### Stake Pool Manager Examples
@@ -181,7 +181,7 @@ The reserve stake account identifier is `J5XB7mWpeaUZxZ6ogXT57qSCobczx27vLZYSgfS
 This account holds onto additional stake used when rebalancing between validators.
 
 For a stake pool with 1000 validators, the cost to create a stake pool is less
-than 0.5 SOL.
+than 0.5 SAFE.
 
 #### Set manager
 
@@ -246,7 +246,7 @@ In order to accommodate large numbers of user deposits into the stake pool, the
 stake pool only manages one stake account per validator. To add a new validator
 to the stake pool, we first create a validator-associated stake account.
 
-Looking at [validators.app](https://www.validators.app/) or other Solana validator
+Looking at [validators.app](https://www.validators.app/) or other Safecoin validator
 lists, we choose some validators at random and start with identity
 `8SQEcP4FaYQySktNQeyxF3w8pvArx3oMEh7fPrzkN9pu` on vote account
 `2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3`. Let's create a validator stake account
@@ -258,7 +258,7 @@ Creating stake account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN, delegated t
 Signature: 4pA2WKT6d2wkXEtSpiQswv22WyoFad2KX6FdPEzwBiEquvaUBEtzenys5Jh1ABPCh7yc4w8kzqMRRCwDj6ZSUV1K
 ```
 
-In order to maximize censorship resistance, we want to distribute our SOL to as
+In order to maximize censorship resistance, we want to distribute our SAFE to as
 many validators as possible, so let's add a few more.
 
 ```console
@@ -276,25 +276,25 @@ Signature: yQqXCbuA66wQsHtkziNg3XadfZF5aCmvjfentwbZJnSPeEjJwPka3M1QY5GmR1efprptq
 NOTE: These stake accounts have not been added to the stake pool yet. Stake pools
 only accept deposits from fully active (warmed-up) delegated stake accounts.
 
-We can see the status of stake account using the Solana command-line utility.
+We can see the status of stake account using the Safecoin command-line utility.
 
 ```console
-$ solana stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
-Balance: 1.00228288 SOL
-Rent Exempt Reserve: 0.00228288 SOL
-Delegated Stake: 1 SOL
-Active Stake: 0 SOL
-Activating Stake: 1 SOL
+$ safecoin stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
+Balance: 1.00228288 SAFE
+Rent Exempt Reserve: 0.00228288 SAFE
+Delegated Stake: 1 SAFE
+Active Stake: 0 SAFE
+Activating Stake: 1 SAFE
 Stake activates starting from epoch: 211
 Stake Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 Withdraw Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 ```
 
-The stake pool creates these special staking accounts with 1 SOL as the required
+The stake pool creates these special staking accounts with 1 SAFE as the required
 delegation amount. The stake and withdraw authorities are the keypair configured
-with the `--config` flag, using the Solana CLI default key. More information
-about the Solana CLI can be found on the
-[Solana Docs](https://docs.solana.com/running-validator/validator-start#configure-solana-cli).
+with the `--config` flag, using the Safecoin CLI default key. More information
+about the Safecoin CLI can be found on the
+[Safecoin Docs](https://docs.solana.com/running-validator/validator-start#configure-solana-cli).
 
 Now that we have created these delegated validator stake accounts, we need to
 wait an epoch for the delegation to activate.
@@ -307,29 +307,29 @@ We created new validator stake accounts in the last step and staked them. Once
 the stake activates, we can add them to the stake pool.
 
 Also, as mentioned in the last step, validator stake accounts must have exactly
-1.00228288 SOL, 1 SOL for the delegation, and 0.00228288 SOL for the rent-exempt
+1.00228288 SAFE, 1 SAFE for the delegation, and 0.00228288 SAFE for the rent-exempt
 reserve. After activation, the validator stake account may have already gained
 some rewards, so we have to move those rewards off before adding the validator.
 Let's check our stake account again:
 
 ```console
-$ solana stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
-Balance: 1.00628288 SOL
-Rent Exempt Reserve: 0.00228288 SOL
-Delegated Stake: 1.004 SOL
-Active Stake: 1.004 SOL
+$ safecoin stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
+Balance: 1.00628288 SAFE
+Rent Exempt Reserve: 0.00228288 SAFE
+Delegated Stake: 1.004 SAFE
+Active Stake: 1.004 SAFE
 Stake activates starting from epoch: 211
 Stake Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 Withdraw Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 ```
 
-Since the delegated stake is now 1.004 SOL, we need to split that additional
+Since the delegated stake is now 1.004 SAFE, we need to split that additional
 amount into another stake account before adding.
 
 ```console
-$ solana-keygen new -o split-stake.json
+$ safecoin-keygen new -o split-stake.json
 ...
-$ solana split-stake FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN split-stake.json 0.004
+$ safecoin split-stake FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN split-stake.json 0.004
 Signature: 5Pg385MpkWgXhrZZpwX34BZEexvsPSRw2kFZt1Sp3KS1jEFpAc8Vb1zDRqVLbDqJRx3b3gU6zpRc7mdHKvHbHXJH
 ```
 
@@ -338,12 +338,12 @@ Most likely, they will want to deactivate it, wait an epoch, and then withdraw
 the additional lamports back into their account.
 
 ```console
-$ solana deactivate-stake split-stake.json
+$ safecoin deactivate-stake split-stake.json
 ...
-$ solana withdraw-stake split-stake.json 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn ALL
+$ safecoin withdraw-stake split-stake.json 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn ALL
 ```
 
-Now that the validator stake account has exactly 1 delegated SOL, we're ready to
+Now that the validator stake account has exactly 1 delegated SAFE, we're ready to
 add this validator to the stake pool!
 
 ```console
@@ -355,14 +355,14 @@ Signature: 3N1K89rGV9gWueTTrPGTDBwKAp8BikQhKHMFoREw98Q1piXFeZSSxqfnRQexrfAZQfrpY
 Users can start depositing their activated stakes into the stake pool, as
 long as they are delegated to the same vote account, which was
 `FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN` in this example.  You can also
-double-check that at any time using the Solana command-line utility.
+double-check that at any time using the Safecoin command-line utility.
 
 ```console
-$ solana stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
-Balance: 1.00228288 SOL
-Rent Exempt Reserve: 0.00228288 SOL
-Delegated Stake: 1 SOL
-Active Stake: 1 SOL
+$ safecoin stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
+Balance: 1.00228288 SAFE
+Rent Exempt Reserve: 0.00228288 SAFE
+Delegated Stake: 1 SAFE
+Active Stake: 1 SAFE
 Stake activates starting from epoch: 211
 Delegated Vote Account Address: 2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3
 Stake Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
@@ -375,12 +375,12 @@ If the stake pool staker wants to stop delegating to a vote account, they can
 totally remove the validator stake account from the stake pool.
 
 As with adding a validator, the validator stake account must have exactly
-1.00228288 SOL (1 SOL delegated, 0.00228288 SOL for rent exemption) to be removed.
+1.00228288 SAFE (1 SAFE delegated, 0.00228288 SAFE for rent exemption) to be removed.
 
 If that is not the case, the staker must first decrease the stake to that minimum amount.
 Let's assume that the validator stake account delegated to 
 `AUCzCaGAGjL3uyjFBtJs7KuJcgQWvNZu1Z2S9G3pw77G` has a total delegated amount of
-7.5 SOL. To reduce that number, the staker can run:
+7.5 SAFE. To reduce that number, the staker can run:
 
 ```console
 $ spl-stake-pool decrease-validator-stake Zg5YBPAk8RqBR9kaLLSoN5C8Uv7nErBz1WC63HTsCPR AUCzCaGAGjL3uyjFBtJs7KuJcgQWvNZu1Z2S9G3pw77G 6.5
@@ -407,11 +407,11 @@ Signature: 5rrQ3xhDWyiPkUTAQkNAeq31n6sMf1xsg2x9hVY8Vj1NonwBnhxuTv87nADLkwC8Xzc4C
 We can check the removed stake account:
 
 ```console
-$ solana stake-account CrStLEWfme37kDc3nubK9HsmWR5dsuVUuqEKqTR4Mc5E
-Balance: 1.002282880 SOL
-Rent Exempt Reserve: 0.00228288 SOL
-Delegated Stake: 1.000000000 SOL
-Active Stake: 1.000000000 SOL
+$ safecoin stake-account CrStLEWfme37kDc3nubK9HsmWR5dsuVUuqEKqTR4Mc5E
+Balance: 1.002282880 SAFE
+Rent Exempt Reserve: 0.00228288 SAFE
+Delegated Stake: 1.000000000 SAFE
+Active Stake: 1.000000000 SAFE
 Delegated Vote Account Address: AUCzCaGAGjL3uyjFBtJs7KuJcgQWvNZu1Z2S9G3pw77G
 Stake Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 Withdraw Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
@@ -442,7 +442,7 @@ Max Number of Validators: 1000
 
 This isn't great! The last stake account, `E5KBATUd21Dnjnh5sGFw5ngp9kdVXCcAAYMRe2WsVXie`
 has too much allocated. For their strategy, the staker wants the `15.849959206`
-SOL to be distributed evenly, meaning around `5.283319735` in each account. They need
+SAFE to be distributed evenly, meaning around `5.283319735` in each account. They need
 to move `4.281036854` to `FhFft7ArhZZkh6q4ir1JZMYFgXdH6wkT5M5nmDDb1Q13` and
 `1.872447062` to `FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN`.
 
@@ -450,16 +450,16 @@ to move `4.281036854` to `FhFft7ArhZZkh6q4ir1JZMYFgXdH6wkT5M5nmDDb1Q13` and
 
 First, they need to decrease the amount on stake account
 `E5KBATUd21Dnjnh5sGFw5ngp9kdVXCcAAYMRe2WsVXie`, delegated to
-`HJiC8iJ4Sj846SswQuauFJK93UvV6zp3c2T6jzGqzhhz`, by total of `6.153483916` SOL.
+`HJiC8iJ4Sj846SswQuauFJK93UvV6zp3c2T6jzGqzhhz`, by total of `6.153483916` SAFE.
 
-They decrease that amount of SOL:
+They decrease that amount of SAFE:
 
 ```sh
 $ spl-stake-pool decrease-validator-stake Zg5YBPAk8RqBR9kaLLSoN5C8Uv7nErBz1WC63HTsCPR HJiC8iJ4Sj846SswQuauFJK93UvV6zp3c2T6jzGqzhhz 6.153483916
 Signature: ZpQGwT85rJ8Y9afdkXhKo3TVv4xgTz741mmZj2vW7mihYseAkFsazWxza2y8eNGY4HDJm15c1cStwyiQzaM3RpH
 ```
 
-Internally, this instruction splits and deactivates 6.153483916 SOL from the
+Internally, this instruction splits and deactivates 6.153483916 SAFE from the
 validator stake account `E5KBATUd21Dnjnh5sGFw5ngp9kdVXCcAAYMRe2WsVXie` into a
 transient stake account, owned and managed entirely by the stake pool.
 
@@ -474,14 +474,14 @@ can increase the stake on the two other validators,
 `8r1f8mwrUiYdg2Rx9sxTh4M3UAUcCBBrmRA3nxk3Z6Lm` and
 `2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3`.
 
-They add 4.281036854 SOL to `8r1f8mwrUiYdg2Rx9sxTh4M3UAUcCBBrmRA3nxk3Z6Lm`:
+They add 4.281036854 SAFE to `8r1f8mwrUiYdg2Rx9sxTh4M3UAUcCBBrmRA3nxk3Z6Lm`:
 
 ```sh
 $ spl-stake-pool increase-validator-stake Zg5YBPAk8RqBR9kaLLSoN5C8Uv7nErBz1WC63HTsCPR 8r1f8mwrUiYdg2Rx9sxTh4M3UAUcCBBrmRA3nxk3Z6Lm 4.281036854
 Signature: 3GJACzjUGLPjcd9RLUW86AfBLWKapZRkxnEMc2yHT6erYtcKBgCapzyrVH6VN8Utxj7e2mtvzcigwLm6ZafXyTMw
 ```
 
-And they add 1.872447062 SOL to `2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3`:
+And they add 1.872447062 SAFE to `2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3`:
 
 ```sh
 $ spl-stake-pool increase-validator-stake Zg5YBPAk8RqBR9kaLLSoN5C8Uv7nErBz1WC63HTsCPR 2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3 1.872447062
@@ -595,7 +595,7 @@ stake pool. Using the `list` command from the previous section, we see that
 create a stake account and delegate our stake there.
 
 ```console
-$ solana-keygen new --no-passphrase -o stake-account.json
+$ safecoin-keygen new --no-passphrase -o stake-account.json
 Generating a new keypair
 Wrote new keypair to stake-account.json
 ============================================================================
@@ -604,9 +604,9 @@ pubkey: 4F4AYKZbNtDnu7uQey2Vkz9VgkVtLE6XWLezYjc9yxZa
 Save this seed phrase to recover your new keypair:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ============================================================================
-$ solana create-stake-account stake-account.json 10
+$ safecoin create-stake-account stake-account.json 10
 Signature: 5Y9r6MNoqJzVX8TWryAJbdp8i2DvintfxbYWoY6VcLEPgphK2tdydhtJTd3o3dF7QdM2Pg8sBFDZuyNcMag3nPvj
-$ solana delegate-stake 4F4AYKZbNtDnu7uQey2Vkz9VgkVtLE6XWLezYjc9yxZa 2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3
+$ safecoin delegate-stake 4F4AYKZbNtDnu7uQey2Vkz9VgkVtLE6XWLezYjc9yxZa 2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3
 Signature: 2cDjHXSHjuadGQf1NQpPi43A8R19aCifsY16yTcictKPHcSAXN5TvXZ58nDJwkYs12tuZfTh5WVgAMSvptfrKdPP
 ```
 
@@ -689,7 +689,7 @@ Signature: 1215wJUY7vj82TQoGCacQ2VJZ157HnCTvfsUXkYph3nZzJNmeDaGmy1nCD7hkhFfxnQYY
 
 #### Withdraw stake
 
-Whenever the user wants to recover their SOL plus accrued rewards, they can provide their
+Whenever the user wants to recover their SAFE plus accrued rewards, they can provide their
 pool tokens in exchange for an activated stake account.
 
 Let's withdraw 5 pool tokens from the stake pool.
@@ -706,11 +706,11 @@ active stake account, delegated to `EhRbKi4Vhm1oUCGWHiLEMYZqDrHwEd7Jgzgi26QJKvfQ
 Let's double-check the status of the stake account:
 
 ```console
-$ solana stake-account F8iaFJgNy9HS4UBodH8v7BLQA5xDDk25jp5Sf9v5TqhF
-Balance: 5.00228288 SOL
-Rent Exempt Reserve: 0.00228288 SOL
-Delegated Stake: 5 SOL
-Active Stake: 5 SOL
+$ safecoin stake-account F8iaFJgNy9HS4UBodH8v7BLQA5xDDk25jp5Sf9v5TqhF
+Balance: 5.00228288 SAFE
+Rent Exempt Reserve: 0.00228288 SAFE
+Delegated Stake: 5 SAFE
+Active Stake: 5 SAFE
 Delegated Vote Account Address: EhRbKi4Vhm1oUCGWHiLEMYZqDrHwEd7Jgzgi26QJKvfQ
 Stake Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
 Withdraw Authority: 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn
@@ -759,7 +759,7 @@ be able to withdraw their funds.
 
 To get around this case, it is also possible to withdraw from the stake pool's
 reserve, but only if all of the validator stake accounts are at the minimum amount of
-`1 SOL + stake account rent exemption`.
+`1 SAFE + stake account rent exemption`.
 
 ```console
 $ spl-stake-pool withdraw Zg5YBPAk8RqBR9kaLLSoN5C8Uv7nErBz1WC63HTsCPR 5 --use-reserve
@@ -817,7 +817,7 @@ When processing withdrawals, the order of priority goes:
 * reserve stake account
 
 If there is preferred withdraw validator, and that validator stake account has
-any SOL, a user must withdraw from that account.
+any SAFE, a user must withdraw from that account.
 
 If that account is empty, or the preferred withdraw validator stake account is
 not set, then the user must withdraw from any validator stake account.
@@ -839,7 +839,7 @@ epoch after activation for your stake account to match up with the stake pool's 
 
 ### Transaction sizes
 
-The Solana transaction processor has two important limitations:
+The Safecoin transaction processor has two important limitations:
 
 * size of the overall transaction, limited to roughly 1 MTU / packet
 * computation budget per instruction

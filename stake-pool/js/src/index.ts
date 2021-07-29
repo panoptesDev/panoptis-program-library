@@ -1,5 +1,5 @@
 import * as schema from './schema.js';
-import solanaWeb3 from '@solana/web3.js';
+import solanaWeb3 from '@safecoin/web3.js';
 import assert from 'assert';
 
 export class StakePoolAccounts {

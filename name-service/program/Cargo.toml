@@ -1,6 +1,6 @@
 [package]
 name = "spl-name-service"
-description = "Solana Program Library Name Service"
+description = "Safecoin Program Library Name Service"
 version = "0.1.1"
 repository = "https://github.com/solana-labs/solana-program-library"
 authors = [

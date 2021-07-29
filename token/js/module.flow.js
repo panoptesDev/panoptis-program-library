@@ -7,8 +7,8 @@
 import BN from 'bn.js'; // eslint-disable-line
 import {Buffer} from 'buffer';
 import {Layout} from 'buffer-layout';
-import {Connection, PublicKey, TransactionInstruction} from '@solana/web3.js';
-import type {Signer, TransactionSignature} from '@solana/web3.js';
+import {Connection, PublicKey, TransactionInstruction} from '@safecoin/web3.js';
+import type {Signer, TransactionSignature} from '@safecoin/web3.js';
 
 declare module '@solana/spl-token' {
   declare export var TOKEN_PROGRAM_ID;

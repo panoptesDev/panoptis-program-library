@@ -97,7 +97,7 @@ fn compute_d(leverage: u64, amount_a: u128, amount_b: u128) -> Option<u128> {
 }
 
 /// Compute swap amount `y` in proportion to `x`
-/// Solve for y:
+/// Safeve for y:
 /// y**2 + y * (sum' - (A*n**n - 1) * D / (A * n**n)) = D ** (n + 1) / (n ** (2 * n) * prod' * A)
 /// y**2 + b*y = c
 fn compute_new_destination_amount(
@@ -118,7 +118,7 @@ fn compute_new_destination_amount(
     // b = sum' - (A*n**n - 1) * D / (A * n**n)
     let b = new_source_amount.checked_add(d_val.checked_div(leverage)?)?;
 
-    // Solve for y by approximating: y**2 + b*y = c
+    // Safeve for y by approximating: y**2 + b*y = c
     let mut y_prev: U256;
     let mut y = d_val;
     for _ in 0..ITERATIONS {

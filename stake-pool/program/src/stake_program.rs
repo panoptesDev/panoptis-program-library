@@ -1,4 +1,4 @@
-//! FIXME copied from the solana stake program
+//! FIXME copied from the safecoin stake program
 
 use {
     borsh::{
@@ -26,7 +26,7 @@ pub fn config_id() -> Pubkey {
     Pubkey::from_str(STAKE_CONFIG).unwrap()
 }
 
-/// FIXME copied from solana stake program
+/// FIXME copied from safecoin stake program
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 pub enum StakeInstruction {
     /// Initialize a stake with lockup and authorization information

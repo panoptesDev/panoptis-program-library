@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Updates the solana version in all the SPL crates
+# Updates the safecoin version in all the SPL crates
 #
 
 solana_ver=$1

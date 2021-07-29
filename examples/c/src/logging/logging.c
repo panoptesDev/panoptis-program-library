@@ -3,7 +3,7 @@
  */
 #include <solana_sdk.h>
 
-extern uint64_t logging(SolParameters *params) {
+extern uint64_t logging(SafeParameters *params) {
   // Log a string
   sol_log("static string");
 
@@ -27,10 +27,10 @@ extern uint64_t logging(SolParameters *params) {
 }
 
 extern uint64_t entrypoint(const uint8_t *input) {
-  SolAccountInfo accounts[0];
-  SolParameters params = (SolParameters){.ka = accounts};
+  SafeAccountInfo accounts[0];
+  SafeParameters params = (SafeParameters){.ka = accounts};
 
-  if (!sol_deserialize(input, &params, SOL_ARRAY_SIZE(accounts))) {
+  if (!sol_deserialize(input, &params, SAFE_ARRAY_SIZE(accounts))) {
     return ERROR_INVALID_ARGUMENT;
   }
 

@@ -1,7 +1,7 @@
 [package]
 name = "spl-stake-pool"
 version = "0.4.0"
-description = "Solana Program Library Stake Pool"
+description = "Safecoin Program Library Stake Pool"
 authors = ["Solana Maintainers <maintainers@solana.foundation>"]
 repository = "https://github.com/solana-labs/solana-program-library"
 license = "Apache-2.0"

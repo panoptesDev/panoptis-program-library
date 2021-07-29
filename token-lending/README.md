@@ -1,6 +1,6 @@
 # Token Lending program
 
-A lending protocol for the Token program on the Solana blockchain inspired by Aave and Compound.
+A lending protocol for the Token program on the Safecoin blockchain inspired by Aave and Compound.
 
 Full documentation is available at https://spl.solana.com/token-lending
 
@@ -25,7 +25,7 @@ Please note that only the lending program deployed to devnet is currently operat
 
 This is optional! You can skip these steps and use the [Token Lending CLI](./cli/README.md) with one of the on-chain programs listed above to create a lending market and add reserves to it.
 
-1. [Install the Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools)
+1. [Install the Safecoin CLI](https://docs.solana.com/cli/install-solana-cli-tools)
 
 1. Install the Token and Token Lending CLIs:
    ```shell
@@ -45,7 +45,7 @@ This is optional! You can skip these steps and use the [Token Lending CLI](./cli
 
 1. Generate a keypair for yourself:
    ```shell
-   solana-keygen new -o owner.json
+   safecoin-keygen new -o owner.json
 
    # Wrote new keypair to owner.json
    # ================================================================================
@@ -59,7 +59,7 @@ This is optional! You can skip these steps and use the [Token Lending CLI](./cli
 
 1. Generate a keypair for the program:
    ```shell
-   solana-keygen new -o lending.json
+   safecoin-keygen new -o lending.json
 
    # Wrote new keypair to lending.json
    # ============================================================================
@@ -85,20 +85,20 @@ This is optional! You can skip these steps and use the [Token Lending CLI](./cli
 
 1. Prepare to deploy to devnet:
    ```shell
-   solana config set --url https://api.devnet.solana.com
+   safecoin config set --url https://api.devnet.safecoin.org
    ```
 
-1. Score yourself some sweet SOL:
+1. Score yourself some sweet SAFE:
    ```shell
-   solana airdrop -k owner.json 10
-   solana airdrop -k owner.json 10
-   solana airdrop -k owner.json 10
+   safecoin airdrop -k owner.json 10
+   safecoin airdrop -k owner.json 10
+   safecoin airdrop -k owner.json 10
    ```
    You'll use this for transaction fees, rent for your program accounts, and initial reserve liquidity.
 
 1. Deploy the program:
    ```shell
-   solana program deploy \
+   safecoin program deploy \
      -k owner.json \
      --program-id lending.json \
      target/deploy/spl_token_lending.so
@@ -107,14 +107,14 @@ This is optional! You can skip these steps and use the [Token Lending CLI](./cli
    ```
    If the deployment doesn't succeed, follow [this guide](https://docs.solana.com/cli/deploy-a-program#resuming-a-failed-deploy) to resume it.
 
-1. Wrap some of your SOL as an SPL Token:
+1. Wrap some of your SAFE as an SPL Token:
    ```shell
    spl-token wrap \
       --fee-payer owner.json \
       10.0 \
       -- owner.json
 
-   # Wrapping 10 SOL into AJ2sgpgj6ZeQazPPiDyTYqN9vbj58QMaZQykB9Sr6XY
+   # Wrapping 10 SAFE into AJ2sgpgj6ZeQazPPiDyTYqN9vbj58QMaZQykB9Sr6XY
    ```
    You'll use this for initial reserve liquidity. Note the SPL Token account pubkey (e.g. `AJ2sgpgj6ZeQazPPiDyTYqN9vbj58QMaZQykB9Sr6XY`).
 

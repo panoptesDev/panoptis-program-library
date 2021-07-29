@@ -577,7 +577,7 @@ mod test {
         solana_program::borsh::{
             get_instance_packed_len, get_packed_len, try_from_slice_unchecked,
         },
-        solana_program::native_token::LAMPORTS_PER_SOL,
+        solana_program::native_token::LAMPORTS_PER_SAFE,
     };
 
     fn uninitialized_validator_list() -> ValidatorList {
@@ -757,18 +757,18 @@ mod test {
 
     #[test]
     fn specific_fee_calculation() {
-        // 10% of 10 SOL in rewards should be 1 SOL in fees
+        // 10% of 10 SAFE in rewards should be 1 SAFE in fees
         let fee = Fee {
             numerator: 1,
             denominator: 10,
         };
         let mut stake_pool = StakePool {
-            total_stake_lamports: 100 * LAMPORTS_PER_SOL,
-            pool_token_supply: 100 * LAMPORTS_PER_SOL,
+            total_stake_lamports: 100 * LAMPORTS_PER_SAFE,
+            pool_token_supply: 100 * LAMPORTS_PER_SAFE,
             fee,
             ..StakePool::default()
         };
-        let reward_lamports = 10 * LAMPORTS_PER_SOL;
+        let reward_lamports = 10 * LAMPORTS_PER_SAFE;
         let pool_token_fee = stake_pool.calc_fee_amount(reward_lamports).unwrap();
 
         stake_pool.total_stake_lamports += reward_lamports;
@@ -777,7 +777,7 @@ mod test {
         let fee_lamports = stake_pool
             .calc_lamports_withdraw_amount(pool_token_fee)
             .unwrap();
-        assert_eq!(fee_lamports, LAMPORTS_PER_SOL - 1); // lose 1 lamport of precision
+        assert_eq!(fee_lamports, LAMPORTS_PER_SAFE - 1); // lose 1 lamport of precision
     }
 
     proptest! {

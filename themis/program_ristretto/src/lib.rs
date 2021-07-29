@@ -1,4 +1,4 @@
-//! An implementation of Brave's THEMIS for the Solana blockchain
+//! An implementation of Brave's THEMIS for the Safecoin blockchain
 #![forbid(unsafe_code)]
 
 pub mod error;

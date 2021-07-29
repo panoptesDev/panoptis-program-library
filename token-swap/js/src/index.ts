@@ -2,21 +2,21 @@ import assert from 'assert';
 import BN from 'bn.js';
 import {Buffer} from 'buffer';
 import * as BufferLayout from 'buffer-layout';
-import type {Connection, TransactionSignature} from '@solana/web3.js';
+import type {Connection, TransactionSignature} from '@safecoin/web3.js';
 import {
   Account,
   PublicKey,
   SystemProgram,
   Transaction,
   TransactionInstruction,
-} from '@solana/web3.js';
+} from '@safecoin/web3.js';
 
 import * as Layout from './layout';
 import {sendAndConfirmTransaction} from './util/send-and-confirm-transaction';
 import {loadAccount} from './util/account';
 
 export const TOKEN_SWAP_PROGRAM_ID: PublicKey = new PublicKey(
-  'SwaPpA9LAaLfeLi3a68M4DjnLqgtticKg6CnyNwgAC8',
+  '6RWe1TGwvojnbAynyWrHzm3GgHf7AmX7kLQTJG7vHCfb',
 );
 
 /**

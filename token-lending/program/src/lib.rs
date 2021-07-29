@@ -1,6 +1,6 @@
 #![deny(missing_docs)]
 
-//! A lending program for the Solana blockchain.
+//! A lending program for the Safecoin blockchain.
 
 pub mod entrypoint;
 pub mod error;

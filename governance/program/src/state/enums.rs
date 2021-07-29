@@ -123,7 +123,7 @@ pub enum VoteWeightSource {
     Deposit,
     /// Governing token account snapshots as of the time a proposal entered voting state are used as voter weights
     /// Note: Snapshot source is not supported in the current version
-    /// Support for account snapshots are required in solana and/or arweave as a prerequisite
+    /// Support for account snapshots are required in safecoin and/or arweave as a prerequisite
     Snapshot,
 }
 

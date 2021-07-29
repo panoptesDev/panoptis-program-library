@@ -1,7 +1,7 @@
 #![deny(missing_docs)]
 #![forbid(unsafe_code)]
 
-//! An ERC20-like Token program for the Solana blockchain
+//! An ERC20-like Token program for the Safecoin blockchain
 
 pub mod error;
 pub mod instruction;
@@ -27,7 +27,7 @@ pub fn amount_to_ui_amount(amount: u64, decimals: u8) -> f64 {
     amount as f64 / 10_usize.pow(decimals as u32) as f64
 }
 
-solana_program::declare_id!("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA");
+solana_program::declare_id!("HMGr16f8Ct1Zeb9TGPypt9rPgzCkmhCQB8Not8vwiPW1");
 
 /// Checks that the supplied program ID is the correct one for SPL-token
 pub fn check_program_account(spl_token_program_id: &Pubkey) -> ProgramResult {

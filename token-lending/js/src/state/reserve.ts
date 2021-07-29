@@ -1,4 +1,4 @@
-import { AccountInfo, PublicKey } from '@solana/web3.js';
+import { AccountInfo, PublicKey } from '@safecoin/web3.js';
 import BigNumber from 'bignumber.js';
 import { blob, struct, u8 } from 'buffer-layout';
 import { decimal, Parser, publicKey, u64 } from '../util';
