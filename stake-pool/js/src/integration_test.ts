@@ -15,7 +15,7 @@ describe('Integration test', () => {
      * decodes them, and prints their details.
      */
     const connection = new Connection(
-      'https://api.devnet.panoptis.org/',
+      'https://api.devnet.panoptis.network/',
       'confirmed',
     );
     const STAKE_POOL_PROGRAM_ADDR = new PublicKey(
@@ -43,7 +43,7 @@ describe('Integration test', () => {
      * Testnet presents a greater challenge due to the presence of old stake pool program accounts
      */
     const connection = new Connection(
-      'https://api.testnet.panoptis.org/',
+      'https://api.testnet.panoptis.network/',
       'confirmed',
     );
     const STAKE_POOL_PROGRAM_ADDR = new PublicKey(

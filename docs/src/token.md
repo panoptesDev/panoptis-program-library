@@ -53,8 +53,8 @@ The `spl-token` configuration is shared with the `solana` command-line tool.
 ```console
 $ panoptis config get
 Config File: ${HOME}/.config/solana/cli/config.yml
-RPC URL: https://api.mainnet-beta.panoptis.org
-WebSocket URL: wss://api.mainnet-beta.panoptis.org/ (computed)
+RPC URL: https://api.mainnet-beta.panoptis.network
+WebSocket URL: wss://api.mainnet-beta.panoptis.network/ (computed)
 Keypair Path: ${HOME}/.config/solana/id.json
 ```
 
@@ -62,7 +62,7 @@ Keypair Path: ${HOME}/.config/solana/id.json
 
 See [Solcoin clusters](https://docs.solana.com/clusters) for cluster-specific RPC URLs
 ```console
-$ panoptis config set --url https://api.devnet.panoptis.org
+$ panoptis config set --url https://api.devnet.panoptis.network
 ```
 
 #### Default Keypair
@@ -566,7 +566,7 @@ Additionally the versatile `getProgramAccounts` JSON RPC method can be employed 
 
 To find all token accounts for the `TESTpKgj42ya3st2SQTKiANjTBmncQSCqLAZGcSPLGM` mint:
 ```
-curl http://api.mainnet-beta.panoptis.org -X POST -H "Content-Type: application/json" -d '
+curl http://api.mainnet-beta.panoptis.network -X POST -H "Content-Type: application/json" -d '
   {
     "jsonrpc": "2.0",
     "id": 1,
@@ -602,7 +602,7 @@ address within each token account.
 
 Find all token accounts owned by the `vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg` user:
 ```
-curl http://api.mainnet-beta.panoptis.org -X POST -H "Content-Type: application/json" -d '
+curl http://api.mainnet-beta.panoptis.network -X POST -H "Content-Type: application/json" -d '
   {
     "jsonrpc": "2.0",
     "id": 1,

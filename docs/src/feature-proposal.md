@@ -105,7 +105,7 @@ Number of validators: 376
 Tokens to be minted: 134575791.53064314
 Tokens required for acceptance: 90165780.3255309 (67%)
 Token distribution file: feature-proposal.csv
-JSON RPC URL: http://api.mainnet-beta.panoptis.org
+JSON RPC URL: http://api.mainnet-beta.panoptis.network
 
 Distribute the proposal tokens to all validators by running:
     $ panoptis-tokens distribute-spl-tokens --from GK55hNft4TGc3Hg4KzbjEmju8VfaNuXK8jQNDTZKcsNF --input-csv feature-proposal.csv --db-path db.8CyUVvio --fee-payer ~/.config/solana/id.json --owner <FEATURE_PROPOSAL_KEYPAIR>

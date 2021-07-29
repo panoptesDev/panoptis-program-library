@@ -106,8 +106,8 @@ The `spl-stake-pool` configuration is shared with the `solana` command-line tool
 ```console
 panoptis config get
 Config File: ${HOME}/.config/solana/cli/config.yml
-RPC URL: https://api.mainnet-beta.panoptis.org
-WebSocket URL: wss://api.mainnet-beta.panoptis.org/ (computed)
+RPC URL: https://api.mainnet-beta.panoptis.network
+WebSocket URL: wss://api.mainnet-beta.panoptis.network/ (computed)
 Keypair Path: ${HOME}/.config/solana/id.json
 ```
 
@@ -115,7 +115,7 @@ Keypair Path: ${HOME}/.config/solana/id.json
 
 See [Solcoin clusters](https://docs.solana.com/clusters) for cluster-specific RPC URLs
 ```console
-panoptis config set --url https://api.devnet.panoptis.org
+panoptis config set --url https://api.devnet.panoptis.network
 ```
 
 #### Default Keypair

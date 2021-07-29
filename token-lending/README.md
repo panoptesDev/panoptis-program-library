@@ -85,7 +85,7 @@ This is optional! You can skip these steps and use the [Token Lending CLI](./cli
 
 1. Prepare to deploy to devnet:
    ```shell
-   panoptis config set --url https://api.devnet.panoptis.org
+   panoptis config set --url https://api.devnet.panoptis.network
    ```
 
 1. Score yourself some sweet PANO:

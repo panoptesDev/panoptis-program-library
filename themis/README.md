@@ -58,7 +58,7 @@ cargo build --example tps
 Point to the testnet cluster (default is mainnet-beta):
 
 ```bash
-panoptis config set --url http://api.testnet.panoptis.org
+panoptis config set --url http://api.testnet.panoptis.network
 ```
 
 Create a keypair and airdrop it some PANO:

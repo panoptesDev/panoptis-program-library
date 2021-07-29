@@ -3,7 +3,7 @@
 ### PANO / SRM Aggregator Accounts
 
 ```shell
-panoptis config set --url https://api.devnet.panoptis.org
+panoptis config set --url https://api.devnet.panoptis.network
 
 # Pyth product: PANO/USD
 panoptis account 3Mnn2fX6rQyUsyELYms1sBJyChWofzSNRoqYzvgMVz5E --output-file 3Mnn2fX6rQyUsyELYms1sBJyChWofzSNRoqYzvgMVz5E.bin
