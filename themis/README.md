@@ -33,7 +33,7 @@ source $HOME/.cargo/env
 Install the Solcoin command-line tools:
 
 ```bash
-curl -sSf https://raw.githubusercontent.com/solana-labs/solana/v1.4.2/install/safecoin-install-init.sh | sh -s - v1.4.2
+curl -sSf https://raw.githubusercontent.com/solana-labs/solana/v1.4.2/install/panoptis-install-init.sh | sh -s - v1.4.2
 export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
 ```
 
@@ -58,14 +58,14 @@ cargo build --example tps
 Point to the testnet cluster (default is mainnet-beta):
 
 ```bash
-safecoin config set --url http://api.testnet.safecoin.org
+panoptis config set --url http://api.testnet.panoptis.org
 ```
 
 Create a keypair and airdrop it some SAFE:
 
 ```bash
-safecoin-keygen new --no-passphrase
-safecoin airdrop 10
+panoptis-keygen new --no-passphrase
+panoptis airdrop 10
 ```
 
 ### Run the TPS example app

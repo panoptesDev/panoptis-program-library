@@ -2,14 +2,14 @@ import assert from 'assert';
 import BN from 'bn.js';
 import {Buffer} from 'buffer';
 import * as BufferLayout from 'buffer-layout';
-import type {Connection, TransactionSignature} from '@safecoin/web3.js';
+import type {Connection, TransactionSignature} from '@panoptis/web3.js';
 import {
   Account,
   PublicKey,
   SystemProgram,
   Transaction,
   TransactionInstruction,
-} from '@safecoin/web3.js';
+} from '@panoptis/web3.js';
 
 import * as Layout from './layout';
 import {sendAndConfirmTransaction} from './util/send-and-confirm-transaction';

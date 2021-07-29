@@ -1,4 +1,4 @@
-var web3 = require('@safecoin/web3.js');
+var web3 = require('@panoptis/web3.js');
 var splToken = require('@solana/spl-token');
 
 (async () => {

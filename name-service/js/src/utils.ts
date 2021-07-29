@@ -8,7 +8,7 @@ import {
   PublicKey,
   Transaction,
   TransactionInstruction,
-} from '@safecoin/web3.js';
+} from '@panoptis/web3.js';
 import BN from 'bn.js';
 
 import { HASH_PREFIX, NAME_PROGRAM_ID } from './bindings';

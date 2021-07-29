@@ -1,4 +1,4 @@
-import { AccountInfo, PublicKey } from '@safecoin/web3.js';
+import { AccountInfo, PublicKey } from '@panoptis/web3.js';
 import BigNumber from 'bignumber.js';
 import { blob, Layout, u8 } from 'buffer-layout';
 import { toBigIntLE, toBufferLE } from 'bigint-buffer';

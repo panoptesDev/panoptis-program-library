@@ -45,7 +45,7 @@ This is optional! You can skip these steps and use the [Token Lending CLI](./cli
 
 1. Generate a keypair for yourself:
    ```shell
-   safecoin-keygen new -o owner.json
+   panoptis-keygen new -o owner.json
 
    # Wrote new keypair to owner.json
    # ================================================================================
@@ -59,7 +59,7 @@ This is optional! You can skip these steps and use the [Token Lending CLI](./cli
 
 1. Generate a keypair for the program:
    ```shell
-   safecoin-keygen new -o lending.json
+   panoptis-keygen new -o lending.json
 
    # Wrote new keypair to lending.json
    # ============================================================================
@@ -85,20 +85,20 @@ This is optional! You can skip these steps and use the [Token Lending CLI](./cli
 
 1. Prepare to deploy to devnet:
    ```shell
-   safecoin config set --url https://api.devnet.safecoin.org
+   panoptis config set --url https://api.devnet.panoptis.org
    ```
 
 1. Score yourself some sweet SAFE:
    ```shell
-   safecoin airdrop -k owner.json 10
-   safecoin airdrop -k owner.json 10
-   safecoin airdrop -k owner.json 10
+   panoptis airdrop -k owner.json 10
+   panoptis airdrop -k owner.json 10
+   panoptis airdrop -k owner.json 10
    ```
    You'll use this for transaction fees, rent for your program accounts, and initial reserve liquidity.
 
 1. Deploy the program:
    ```shell
-   safecoin program deploy \
+   panoptis program deploy \
      -k owner.json \
      --program-id lending.json \
      target/deploy/spl_token_lending.so

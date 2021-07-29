@@ -36,7 +36,7 @@
     "build": "rollup -c",
     "build:browser-test": "rollup -c test/rollup.config.js",
     "start": "babel-node cli/main.js",
-    "start-with-test-validator": "start-server-and-test 'safecoin-test-validator --reset --quiet' http://localhost:8328/health start",
+    "start-with-test-validator": "start-server-and-test 'panoptis-test-validator --reset --quiet' http://localhost:8328/health start",
     "lint": "npm run pretty && eslint .",
     "lint:fix": "npm run pretty:fix && eslint . --fix",
     "flow": "flow check-contents < module.flow.js",
@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.10.5",
-    "@safecoin/web3.js": "^1.21.0",
+    "@panoptis/web3.js": "^1.21.0",
     "bn.js": "^5.1.0",
     "buffer": "6.0.3",
     "buffer-layout": "^1.2.0",

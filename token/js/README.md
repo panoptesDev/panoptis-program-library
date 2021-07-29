@@ -8,7 +8,7 @@ The Token JavaScript library comprises:
 
 ## Getting Started
 
-First fetch the npm dependencies, including `@safecoin/web3.js`, by running:
+First fetch the npm dependencies, including `@panoptis/web3.js`, by running:
 ```bash
 $ npm install
 ```
@@ -25,12 +25,12 @@ $ export RUST_LOG=solana_runtime::native_loader=trace,solana_runtime::system_ins
 
 To start a local Solcoin cluster run:
 ```bash
-$ safecoin-test-validator
+$ panoptis-test-validator
 ```
 
 Solcoin cluster logs are available with:
 ```bash
-$ safecoin --url http://127.0.0.1:8328/ logs
+$ panoptis --url http://127.0.0.1:8328/ logs
 ```
 
 ### Build the on-chain program

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Patches the SPL crates for developing against a local safecoin monorepo
+# Patches the SPL crates for developing against a local panoptis monorepo
 #
 
 solana_dir=$1
@@ -15,7 +15,7 @@ workspace_crates=(
 )
 
 if [[ ! -r "$solana_dir"/scripts/read-cargo-variable.sh ]]; then
-  echo "$solana_dir is not a path to the safecoin monorepo"
+  echo "$solana_dir is not a path to the panoptis monorepo"
   exit 1
 fi
 

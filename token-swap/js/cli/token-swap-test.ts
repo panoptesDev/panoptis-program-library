@@ -4,7 +4,7 @@ import {
   PublicKey,
   SystemProgram,
   Transaction,
-} from '@safecoin/web3.js';
+} from '@panoptis/web3.js';
 import {AccountLayout, Token, TOKEN_PROGRAM_ID} from '@solana/spl-token';
 
 import {TokenSwap, CurveType, TOKEN_SWAP_PROGRAM_ID} from '../src';

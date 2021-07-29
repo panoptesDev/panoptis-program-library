@@ -115,7 +115,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         .value_name("FILENAME")
                         .required(true)
                         .default_value("feature-proposal.csv")
-                        .help("Allocations CSV file for use with safecoin-tokens"),
+                        .help("Allocations CSV file for use with panoptis-tokens"),
                 )
                 .arg(
                     Arg::with_name("confirm")
@@ -336,7 +336,7 @@ fn process_propose(
     println!();
     println!("Distribute the proposal tokens to all validators by running:");
     println!(
-        "    $ safecoin-tokens distribute-spl-tokens \
+        "    $ panoptis-tokens distribute-spl-tokens \
                   --from {} \
                   --input-csv {} \
                   --db-path db.{} \
@@ -347,7 +347,7 @@ fn process_propose(
         &feature_proposal_keypair.pubkey().to_string()[..8]
     );
     println!(
-        "    $ safecoin-tokens spl-token-balances \
+        "    $ panoptis-tokens spl-token-balances \
                  --mint {} --input-csv {}",
         mint_address, distribution_file
     );

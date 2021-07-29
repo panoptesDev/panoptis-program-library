@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Script to setup a local safecoin-test-validator with the stake pool program
+# Script to setup a local panoptis-test-validator with the stake pool program
 
 cd "$(dirname "$0")"
 max_validators=$1
@@ -16,7 +16,7 @@ fi
 create_keypair () {
   if test ! -f $1
   then
-    safecoin-keygen new --no-passphrase -s -o $1
+    panoptis-keygen new --no-passphrase -s -o $1
   fi
 }
 
@@ -25,11 +25,11 @@ build_program () {
 }
 
 setup_validator() {
-  safecoin-test-validator --bpf-program SPoo1xuN9wGpxNjGnPNbRPtpQ7mHgKM8d9BeFC549Jy ../../../target/deploy/spl_stake_pool.so --quiet --reset --slots-per-epoch 32 &
+  panoptis-test-validator --bpf-program SPoo1xuN9wGpxNjGnPNbRPtpQ7mHgKM8d9BeFC549Jy ../../../target/deploy/spl_stake_pool.so --quiet --reset --slots-per-epoch 32 &
   pid=$!
-  safecoin config set --url http://127.0.0.1:8328
-  safecoin config set --commitment confirmed
-  echo "waiting for safecoin-test-validator, pid: $pid"
+  panoptis config set --url http://127.0.0.1:8328
+  panoptis config set --commitment confirmed
+  echo "waiting for panoptis-test-validator, pid: $pid"
   sleep 5
 }
 
@@ -40,8 +40,8 @@ create_vote_accounts () {
   do
     create_keypair $keys_dir/identity_$number.json
     create_keypair $keys_dir/vote_$number.json
-    safecoin create-vote-account $keys_dir/vote_$number.json $keys_dir/identity_$number.json --commission 1
-    vote_pubkey=$(safecoin-keygen pubkey $keys_dir/vote_$number.json)
+    panoptis create-vote-account $keys_dir/vote_$number.json $keys_dir/identity_$number.json --commission 1
+    vote_pubkey=$(panoptis-keygen pubkey $keys_dir/vote_$number.json)
     echo $vote_pubkey >> $validator_list
   done
 }

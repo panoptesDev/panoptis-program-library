@@ -775,7 +775,7 @@ impl GovernanceProgramTest {
 
         let program_data_address = get_program_data_address(&program_keypair.pubkey());
 
-        // Load solana_bpf_rust_upgradeable program taken from safecoin test programs
+        // Load solana_bpf_rust_upgradeable program taken from panoptis test programs
         let path_buf = find_file("solana_bpf_rust_upgradeable.so").unwrap();
         let program_data = read_file(path_buf);
 
@@ -1497,7 +1497,7 @@ impl GovernanceProgramTest {
         let program_buffer_keypair = Keypair::new();
         let buffer_authority_keypair = Keypair::new();
 
-        // Load solana_bpf_rust_upgraded program taken from safecoin test programs
+        // Load solana_bpf_rust_upgraded program taken from panoptis test programs
         let path_buf = find_file("solana_bpf_rust_upgraded.so").unwrap();
         let program_data = read_file(path_buf);
 

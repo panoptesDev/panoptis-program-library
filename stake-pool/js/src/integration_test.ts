@@ -2,7 +2,7 @@ import * as index from './index.js';
 import * as schema from './schema.js';
 import BN from 'bn.js';
 import assert, {deepStrictEqual} from 'assert';
-import {SAFEANA_SCHEMA, PublicKey, Connection} from '@safecoin/web3.js';
+import {SAFEANA_SCHEMA, PublicKey, Connection} from '@panoptis/web3.js';
 
 // First populate schema
 schema.addStakePoolSchema(SAFEANA_SCHEMA);
@@ -15,7 +15,7 @@ describe('Integration test', () => {
      * decodes them, and prints their details.
      */
     const connection = new Connection(
-      'https://api.devnet.safecoin.org/',
+      'https://api.devnet.panoptis.org/',
       'confirmed',
     );
     const STAKE_POOL_PROGRAM_ADDR = new PublicKey(
@@ -43,7 +43,7 @@ describe('Integration test', () => {
      * Testnet presents a greater challenge due to the presence of old stake pool program accounts
      */
     const connection = new Connection(
-      'https://api.testnet.safecoin.org/',
+      'https://api.testnet.panoptis.org/',
       'confirmed',
     );
     const STAKE_POOL_PROGRAM_ADDR = new PublicKey(

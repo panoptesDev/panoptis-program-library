@@ -10,7 +10,7 @@ import {
   SystemProgram,
   Transaction,
   BPF_LOADER_PROGRAM_ID,
-} from '@safecoin/web3.js';
+} from '@panoptis/web3.js';
 
 import {
   Token,

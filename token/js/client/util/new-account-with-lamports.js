@@ -1,6 +1,6 @@
 // @flow
 
-import {Keypair, Connection, Signer} from '@safecoin/web3.js';
+import {Keypair, Connection, Signer} from '@panoptis/web3.js';
 
 import {sleep} from './sleep';
 

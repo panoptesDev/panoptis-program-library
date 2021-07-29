@@ -3,7 +3,7 @@ import {
   PublicKey,
   SystemProgram,
   TransactionInstruction,
-} from '@safecoin/web3.js';
+} from '@panoptis/web3.js';
 
 import { deleteNameRegistry, NAME_PROGRAM_ID } from './bindings';
 import {

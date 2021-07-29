@@ -104,10 +104,10 @@ The `spl-stake-pool` configuration is shared with the `solana` command-line tool
 #### Current Configuration
 
 ```console
-safecoin config get
+panoptis config get
 Config File: ${HOME}/.config/solana/cli/config.yml
-RPC URL: https://api.mainnet-beta.safecoin.org
-WebSocket URL: wss://api.mainnet-beta.safecoin.org/ (computed)
+RPC URL: https://api.mainnet-beta.panoptis.org
+WebSocket URL: wss://api.mainnet-beta.panoptis.org/ (computed)
 Keypair Path: ${HOME}/.config/solana/id.json
 ```
 
@@ -115,7 +115,7 @@ Keypair Path: ${HOME}/.config/solana/id.json
 
 See [Solcoin clusters](https://docs.solana.com/clusters) for cluster-specific RPC URLs
 ```console
-safecoin config set --url https://api.devnet.safecoin.org
+panoptis config set --url https://api.devnet.panoptis.org
 ```
 
 #### Default Keypair
@@ -125,24 +125,24 @@ for information on how to setup a keypair if you don't already have one.
 
 Keypair File
 ```console
-safecoin config set --keypair ${HOME}/new-keypair.json
+panoptis config set --keypair ${HOME}/new-keypair.json
 ```
 
 Hardware Wallet URL (See [URL spec](https://docs.solana.com/wallet-guide/hardware-wallets#specify-a-keypair-url))
 ```console
-safecoin config set --keypair usb://ledger/
+panoptis config set --keypair usb://ledger/
 ```
 
 #### Run Locally
 
 If you would like to test a stake pool locally without having to wait for stakes
 to activate and deactivate, you can run the stake pool locally using the
-`safecoin-test-validator` tool with shorter epochs, and pulling the current program
+`panoptis-test-validator` tool with shorter epochs, and pulling the current program
 from devnet, testnet, or mainnet.
 
 ```console
-$ safecoin-test-validator -c SPoo1xuN9wGpxNjGnPNbRPtpQ7mHgKM8d9BeFC549Jy -c GAm4m8ToXFMW6kT3DwYbT4QPDj2RMi744SjXUHm5szH3 --url devnet --slots-per-epoch 32
-$ safecoin config set --url http://127.0.0.1:8328
+$ panoptis-test-validator -c SPoo1xuN9wGpxNjGnPNbRPtpQ7mHgKM8d9BeFC549Jy -c GAm4m8ToXFMW6kT3DwYbT4QPDj2RMi744SjXUHm5szH3 --url devnet --slots-per-epoch 32
+$ panoptis config set --url http://127.0.0.1:8328
 ```
 
 ### Stake Pool Manager Examples
@@ -279,7 +279,7 @@ only accept deposits from fully active (warmed-up) delegated stake accounts.
 We can see the status of stake account using the Solcoin command-line utility.
 
 ```console
-$ safecoin stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
+$ panoptis stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
 Balance: 1.00228288 SAFE
 Rent Exempt Reserve: 0.00228288 SAFE
 Delegated Stake: 1 SAFE
@@ -313,7 +313,7 @@ some rewards, so we have to move those rewards off before adding the validator.
 Let's check our stake account again:
 
 ```console
-$ safecoin stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
+$ panoptis stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
 Balance: 1.00628288 SAFE
 Rent Exempt Reserve: 0.00228288 SAFE
 Delegated Stake: 1.004 SAFE
@@ -327,9 +327,9 @@ Since the delegated stake is now 1.004 SAFE, we need to split that additional
 amount into another stake account before adding.
 
 ```console
-$ safecoin-keygen new -o split-stake.json
+$ panoptis-keygen new -o split-stake.json
 ...
-$ safecoin split-stake FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN split-stake.json 0.004
+$ panoptis split-stake FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN split-stake.json 0.004
 Signature: 5Pg385MpkWgXhrZZpwX34BZEexvsPSRw2kFZt1Sp3KS1jEFpAc8Vb1zDRqVLbDqJRx3b3gU6zpRc7mdHKvHbHXJH
 ```
 
@@ -338,9 +338,9 @@ Most likely, they will want to deactivate it, wait an epoch, and then withdraw
 the additional lamports back into their account.
 
 ```console
-$ safecoin deactivate-stake split-stake.json
+$ panoptis deactivate-stake split-stake.json
 ...
-$ safecoin withdraw-stake split-stake.json 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn ALL
+$ panoptis withdraw-stake split-stake.json 4SnSuUtJGKvk2GYpBwmEsWG53zTurVM8yXGsoiZQyMJn ALL
 ```
 
 Now that the validator stake account has exactly 1 delegated SAFE, we're ready to
@@ -358,7 +358,7 @@ long as they are delegated to the same vote account, which was
 double-check that at any time using the Solcoin command-line utility.
 
 ```console
-$ safecoin stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
+$ panoptis stake-account FYQB64aEzSmECvnG8RVvdAXBxRnzrLvcA3R22aGH2hUN
 Balance: 1.00228288 SAFE
 Rent Exempt Reserve: 0.00228288 SAFE
 Delegated Stake: 1 SAFE
@@ -407,7 +407,7 @@ Signature: 5rrQ3xhDWyiPkUTAQkNAeq31n6sMf1xsg2x9hVY8Vj1NonwBnhxuTv87nADLkwC8Xzc4C
 We can check the removed stake account:
 
 ```console
-$ safecoin stake-account CrStLEWfme37kDc3nubK9HsmWR5dsuVUuqEKqTR4Mc5E
+$ panoptis stake-account CrStLEWfme37kDc3nubK9HsmWR5dsuVUuqEKqTR4Mc5E
 Balance: 1.002282880 SAFE
 Rent Exempt Reserve: 0.00228288 SAFE
 Delegated Stake: 1.000000000 SAFE
@@ -595,7 +595,7 @@ stake pool. Using the `list` command from the previous section, we see that
 create a stake account and delegate our stake there.
 
 ```console
-$ safecoin-keygen new --no-passphrase -o stake-account.json
+$ panoptis-keygen new --no-passphrase -o stake-account.json
 Generating a new keypair
 Wrote new keypair to stake-account.json
 ============================================================================
@@ -604,9 +604,9 @@ pubkey: 4F4AYKZbNtDnu7uQey2Vkz9VgkVtLE6XWLezYjc9yxZa
 Save this seed phrase to recover your new keypair:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ============================================================================
-$ safecoin create-stake-account stake-account.json 10
+$ panoptis create-stake-account stake-account.json 10
 Signature: 5Y9r6MNoqJzVX8TWryAJbdp8i2DvintfxbYWoY6VcLEPgphK2tdydhtJTd3o3dF7QdM2Pg8sBFDZuyNcMag3nPvj
-$ safecoin delegate-stake 4F4AYKZbNtDnu7uQey2Vkz9VgkVtLE6XWLezYjc9yxZa 2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3
+$ panoptis delegate-stake 4F4AYKZbNtDnu7uQey2Vkz9VgkVtLE6XWLezYjc9yxZa 2HUKQz7W2nXZSwrdX5RkfS2rLU4j1QZLjdGCHcoUKFh3
 Signature: 2cDjHXSHjuadGQf1NQpPi43A8R19aCifsY16yTcictKPHcSAXN5TvXZ58nDJwkYs12tuZfTh5WVgAMSvptfrKdPP
 ```
 
@@ -706,7 +706,7 @@ active stake account, delegated to `EhRbKi4Vhm1oUCGWHiLEMYZqDrHwEd7Jgzgi26QJKvfQ
 Let's double-check the status of the stake account:
 
 ```console
-$ safecoin stake-account F8iaFJgNy9HS4UBodH8v7BLQA5xDDk25jp5Sf9v5TqhF
+$ panoptis stake-account F8iaFJgNy9HS4UBodH8v7BLQA5xDDk25jp5Sf9v5TqhF
 Balance: 5.00228288 SAFE
 Rent Exempt Reserve: 0.00228288 SAFE
 Delegated Stake: 5 SAFE

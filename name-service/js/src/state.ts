@@ -1,4 +1,4 @@
-import { Connection, PublicKey } from '@safecoin/web3.js';
+import { Connection, PublicKey } from '@panoptis/web3.js';
 import { deserializeUnchecked, Schema } from 'borsh';
 
 export class NameRegistryState {

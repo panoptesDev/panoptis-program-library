@@ -1,5 +1,5 @@
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
-import { PublicKey, SYSVAR_RENT_PUBKEY, TransactionInstruction } from '@safecoin/web3.js';
+import { PublicKey, SYSVAR_RENT_PUBKEY, TransactionInstruction } from '@panoptis/web3.js';
 import { blob, struct, u8 } from 'buffer-layout';
 import { LENDING_PROGRAM_ID, ORACLE_PROGRAM_ID } from '../constants';
 import { publicKey } from '../util';

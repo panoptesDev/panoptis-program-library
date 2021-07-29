@@ -2,7 +2,7 @@ import * as index from './index.js';
 import * as schema from './schema.js';
 import BN from 'bn.js';
 import assert, {deepStrictEqual} from 'assert';
-import {SAFEANA_SCHEMA, PublicKey, Connection} from '@safecoin/web3.js';
+import {SAFEANA_SCHEMA, PublicKey, Connection} from '@panoptis/web3.js';
 
 // First populate schema
 schema.addStakePoolSchema(SAFEANA_SCHEMA);

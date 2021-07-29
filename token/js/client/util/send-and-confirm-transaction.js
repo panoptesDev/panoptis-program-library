@@ -1,12 +1,12 @@
 // @flow
 
-import {sendAndConfirmTransaction as realSendAndConfirmTransaction} from '@safecoin/web3.js';
+import {sendAndConfirmTransaction as realSendAndConfirmTransaction} from '@panoptis/web3.js';
 import type {
   Connection,
   Signer,
   Transaction,
   TransactionSignature,
-} from '@safecoin/web3.js';
+} from '@panoptis/web3.js';
 
 export function sendAndConfirmTransaction(
   title: string,

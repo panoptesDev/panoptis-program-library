@@ -7,7 +7,7 @@ declare module '@solana/spl-token' {
     TransactionInstruction,
     TransactionSignature,
     Connection,
-  } from '@safecoin/web3.js';
+  } from '@panoptis/web3.js';
   import BN from 'bn.js';
 
   // === client/token.js ===

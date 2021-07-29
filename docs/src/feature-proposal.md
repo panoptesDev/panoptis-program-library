@@ -21,11 +21,11 @@ cause hard forks or otherwise break consensus.
 The
 [feature](https://docs.rs/solana-program/latest/solana_program/feature/index.html)
 and [feature_set](https://docs.rs/solana-sdk/latest/solana_sdk/feature_set/index.html)
-Rust modules are the primitives for this facility, and the `safecoin feature`
+Rust modules are the primitives for this facility, and the `panoptis feature`
 command-line subcommands allow for easy feature status inspection and feature
 activation.
 
-The `safecoin feature activate` workflow was designed for use by the core Solcoin
+The `panoptis feature activate` workflow was designed for use by the core Solcoin
 developers to allow for low-overhead addition of non-controversial network
 features over time.
 
@@ -67,7 +67,7 @@ commands.
 
 First create a keypair for the proposal:
 ```
-$ safecoin-keygen new --outfile feature-proposal.json --silent --no-passphrase
+$ panoptis-keygen new --outfile feature-proposal.json --silent --no-passphrase
 Wrote new keypair to feature-proposal.json
 ```
 
@@ -81,9 +81,9 @@ Acceptance Token Address: AdqKm3mSJf8AtTWjfpA5ZbJszWQPcwyLA2XkRyLbf3Di
 which in this case is `HQ3baDfNU7WKCyWvtMYZmi51YPs7vhSiLn1ESYp3jhiA`.
 
 `HQ3baDfNU7WKCyWvtMYZmi51YPs7vhSiLn1ESYp3jhiA` is the identifier that will be
-used in the code base and eventually will be visible in the `safecoin feature status` command.
+used in the code base and eventually will be visible in the `panoptis feature status` command.
 
-Note however that it is not possible to use `safecoin feature activate` to
+Note however that it is not possible to use `panoptis feature activate` to
 activate this feature, as there is no private key for
 `HQ3baDfNU7WKCyWvtMYZmi51YPs7vhSiLn1ESYp3jhiA`.  Activation of this feature is
 only possible by the Feature Proposal Program.
@@ -91,7 +91,7 @@ only possible by the Feature Proposal Program.
 ### Initiate the Feature Proposal
 
 After the feature is implemented and deployed to the Solcoin cluster,
-the *feature id* will be visible in `safecoin feature status` and the *feature
+the *feature id* will be visible in `panoptis feature status` and the *feature
 proposer* may initiate the community proposal process.
 
 This is done by running:
@@ -105,11 +105,11 @@ Number of validators: 376
 Tokens to be minted: 134575791.53064314
 Tokens required for acceptance: 90165780.3255309 (67%)
 Token distribution file: feature-proposal.csv
-JSON RPC URL: http://api.mainnet-beta.safecoin.org
+JSON RPC URL: http://api.mainnet-beta.panoptis.org
 
 Distribute the proposal tokens to all validators by running:
-    $ safecoin-tokens distribute-spl-tokens --from GK55hNft4TGc3Hg4KzbjEmju8VfaNuXK8jQNDTZKcsNF --input-csv feature-proposal.csv --db-path db.8CyUVvio --fee-payer ~/.config/solana/id.json --owner <FEATURE_PROPOSAL_KEYPAIR>
-    $ safecoin-tokens spl-token-balances --mint ALvA7Lv9jbo8JFhxqnRpjWWuR3aD12uCb5KBJst4uc3d --input-csv feature-proposal.csv
+    $ panoptis-tokens distribute-spl-tokens --from GK55hNft4TGc3Hg4KzbjEmju8VfaNuXK8jQNDTZKcsNF --input-csv feature-proposal.csv --db-path db.8CyUVvio --fee-payer ~/.config/solana/id.json --owner <FEATURE_PROPOSAL_KEYPAIR>
+    $ panoptis-tokens spl-token-balances --mint ALvA7Lv9jbo8JFhxqnRpjWWuR3aD12uCb5KBJst4uc3d --input-csv feature-proposal.csv
 
 Once the distribution is complete, request validators vote for the proposal. To vote, validators should first look up their token account address:
     $ spl-token --owner ~/validator-keypair.json accounts ALvA7Lv9jbo8JFhxqnRpjWWuR3aD12uCb5KBJst4uc3d
@@ -144,4 +144,4 @@ Anybody may tally the vote.  Once the required number of votes are tallied, the
 feature will be automatically activated at the start of the next epoch.
 
 Upon a successful activation the feature will now show as activated by
-`safecoin feature status` as well.
+`panoptis feature status` as well.

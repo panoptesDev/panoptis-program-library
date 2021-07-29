@@ -1,6 +1,6 @@
 // @flow
 
-import {Account, Connection} from '@safecoin/web3.js';
+import {Account, Connection} from '@panoptis/web3.js';
 
 /**
  * Create a new system account and airdrop it some lamports

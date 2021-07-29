@@ -55,7 +55,7 @@ function generateConfig(configType, format) {
             // 'bs58',
             // 'buffer',
             // 'buffer-layout',
-            '@safecoin/web3.js',
+            '@panoptis/web3.js',
           ];
 
           break;
@@ -111,7 +111,7 @@ function generateConfig(configType, format) {
         'assert',
         'bn.js',
         'buffer-layout',
-        '@safecoin/web3.js',
+        '@panoptis/web3.js',
       ];
       break;
     default:

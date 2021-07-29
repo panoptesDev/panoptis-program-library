@@ -2,7 +2,7 @@
 <PROJECT_ROOT>/node_modules/*
 
 [libs]
-node_modules/@safecoin/web3.js/module.flow.js
+node_modules/@panoptis/web3.js/module.flow.js
 node_modules/@solana/spl-token/module.flow.js
 flow-typed/
 

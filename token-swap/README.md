@@ -72,7 +72,7 @@ exact problem.
 ### Integration tests
 
 You can test the JavaScript bindings and on-chain interactions using
-`safecoin-test-validator`, included in the Solcoin Tool Suite.  See the
+`panoptis-test-validator`, included in the Solcoin Tool Suite.  See the
 [CLI installation instructions](https://docs.solana.com/cli/install-solana-cli-tools).
 
 From `./js`, install the required modules:

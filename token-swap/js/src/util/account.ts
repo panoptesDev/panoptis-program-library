@@ -1,5 +1,5 @@
-import type {Connection} from '@safecoin/web3.js';
-import {PublicKey} from '@safecoin/web3.js';
+import type {Connection} from '@panoptis/web3.js';
+import {PublicKey} from '@panoptis/web3.js';
 
 export async function loadAccount(
   connection: Connection,

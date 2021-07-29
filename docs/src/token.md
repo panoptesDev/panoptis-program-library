@@ -51,10 +51,10 @@ The `spl-token` configuration is shared with the `solana` command-line tool.
 #### Current Configuration
 
 ```console
-$ safecoin config get
+$ panoptis config get
 Config File: ${HOME}/.config/solana/cli/config.yml
-RPC URL: https://api.mainnet-beta.safecoin.org
-WebSocket URL: wss://api.mainnet-beta.safecoin.org/ (computed)
+RPC URL: https://api.mainnet-beta.panoptis.org
+WebSocket URL: wss://api.mainnet-beta.panoptis.org/ (computed)
 Keypair Path: ${HOME}/.config/solana/id.json
 ```
 
@@ -62,7 +62,7 @@ Keypair Path: ${HOME}/.config/solana/id.json
 
 See [Solcoin clusters](https://docs.solana.com/clusters) for cluster-specific RPC URLs
 ```console
-$ safecoin config set --url https://api.devnet.safecoin.org
+$ panoptis config set --url https://api.devnet.panoptis.org
 ```
 
 #### Default Keypair
@@ -72,12 +72,12 @@ for information on how to setup a keypair if you don't already have one.
 
 Keypair File
 ```console
-$ safecoin config set --keypair ${HOME}/new-keypair.json
+$ panoptis config set --keypair ${HOME}/new-keypair.json
 ```
 
 Hardware Wallet URL (See [URL spec](https://docs.solana.com/wallet-guide/hardware-wallets#specify-a-keypair-url))
 ```console
-$ safecoin config set --keypair usb://ledger/
+$ panoptis config set --keypair usb://ledger/
 ```
 
 #### Airdrop SAFE
@@ -86,7 +86,7 @@ Creating tokens and accounts requires SAFE for account rent deposits and
 transaction fees. If the cluster you are targeting offers a faucet, you can get
 a little SAFE for testing:
 ```console
-$ safecoin airdrop 1
+$ panoptis airdrop 1
 ```
 
 ### Example: Creating your own fungible token
@@ -171,7 +171,7 @@ Signature: f7opZ86ZHKGvkJBQsJ8Pk81v8F3v1VUfyd4kFs4CABmfTnSZK5BffETznUU3tEWvzibgK
 ### Example: Transferring tokens to another user
 First the receiver uses `spl-token create-account` to create their associated
 token account for the Token type.  Then the receiver obtains their wallet
-address by running `safecoin address` and provides it to the sender.
+address by running `panoptis address` and provides it to the sender.
 
 The sender then runs:
 ```console
@@ -188,7 +188,7 @@ Signature: 5a3qbvoJQnTAxGPHCugibZTbSu7xuTgkxvF4EJupRjRXGgZZrnWFmKzfEzcqKF2ogCaF4
 If the receiver does not yet have an associated token account, the sender may
 choose to fund the receiver's account.
 
-The receiver obtains their wallet address by running `safecoin address` and provides it to the sender.
+The receiver obtains their wallet address by running `panoptis address` and provides it to the sender.
 
 The sender then runs to fund the receiver's associated token account, at the
 sender's expense, and then transfers 50 tokens into it:
@@ -317,7 +317,7 @@ First create keypairs to act as the multisig signer-set. In reality, these can
 be any supported signer, like: a Ledger hardware wallet, a keypair file, or
 a paper wallet. For convenience, keypair files will be used in this example.
 ```console
-$ for i in $(seq 3); do safecoin-keygen new --no-passphrase -so "signer-${i}.json"; done
+$ for i in $(seq 3); do panoptis-keygen new --no-passphrase -so "signer-${i}.json"; done
 Wrote new keypair to signer-1.json
 Wrote new keypair to signer-2.json
 Wrote new keypair to signer-3.json
@@ -326,7 +326,7 @@ Wrote new keypair to signer-3.json
 In order to create the multisig account, the public keys of the signer-set must
 be collected.
 ```console
-$ for i in $(seq 3); do SIGNER="signer-${i}.json"; echo "$SIGNER: $(safecoin-keygen pubkey "$SIGNER")"; done
+$ for i in $(seq 3); do SIGNER="signer-${i}.json"; echo "$SIGNER: $(panoptis-keygen pubkey "$SIGNER")"; done
 signer-1.json: BzWpkuRrwXHq4SSSFHa8FJf6DRQy4TaeoXnkA89vTgHZ
 signer-2.json: DhkUfKgfZ8CF6PAGKwdABRL1VqkeNrTSRx8LZfpPFVNY
 signer-3.json: D7ssXHrZJjfpZXsmDf8RwfPxe1BMMMmP1CtmX3WojPmG
@@ -412,7 +412,7 @@ and multisig signer-set keypair filenames as the online example, as well as a no
 account that we create here:
 
 ```console
-$ safecoin-keygen new -o nonce-keypair.json
+$ panoptis-keygen new -o nonce-keypair.json
 ...
 ======================================================================
 pubkey: Fjyud2VXixk2vCs4DkBpfpsq48d81rbEzh6deKt7WvPj
@@ -420,12 +420,12 @@ pubkey: Fjyud2VXixk2vCs4DkBpfpsq48d81rbEzh6deKt7WvPj
 ```
 
 ```console
-$ safecoin create-nonce-account nonce-keypair.json 1
+$ panoptis create-nonce-account nonce-keypair.json 1
 Signature: 3DALwrAAmCDxqeb4qXZ44WjpFcwVtgmJKhV4MW5qLJVtWeZ288j6Pzz1F4BmyPpnGLfx2P8MEJXmqPchX5y2Lf3r
 ```
 
 ```console
-$ safecoin nonce-account Fjyud2VXixk2vCs4DkBpfpsq48d81rbEzh6deKt7WvPj
+$ panoptis nonce-account Fjyud2VXixk2vCs4DkBpfpsq48d81rbEzh6deKt7WvPj
 Balance: 0.01 SAFE
 Minimum Balance Required: 0.00144768 SAFE
 Nonce blockhash: 6DPt2TfFBG7sR4Hqu16fbMXPj8ddHKkbU4Y3EEEWrC2E
@@ -566,7 +566,7 @@ Additionally the versatile `getProgramAccounts` JSON RPC method can be employed 
 
 To find all token accounts for the `TESTpKgj42ya3st2SQTKiANjTBmncQSCqLAZGcSPLGM` mint:
 ```
-curl http://api.mainnet-beta.safecoin.org -X POST -H "Content-Type: application/json" -d '
+curl http://api.mainnet-beta.panoptis.org -X POST -H "Content-Type: application/json" -d '
   {
     "jsonrpc": "2.0",
     "id": 1,
@@ -602,7 +602,7 @@ address within each token account.
 
 Find all token accounts owned by the `vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg` user:
 ```
-curl http://api.mainnet-beta.safecoin.org -X POST -H "Content-Type: application/json" -d '
+curl http://api.mainnet-beta.panoptis.org -X POST -H "Content-Type: application/json" -d '
   {
     "jsonrpc": "2.0",
     "id": 1,

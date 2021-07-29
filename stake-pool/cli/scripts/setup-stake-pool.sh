@@ -18,7 +18,7 @@ build_cli () {
 create_keypair () {
   if test ! -f $1
   then
-    safecoin-keygen new --no-passphrase -s -o $1
+    panoptis-keygen new --no-passphrase -s -o $1
   fi
 }
 
@@ -63,7 +63,7 @@ build_cli
 echo "Creating pool"
 setup_pool $max_validators $stake_pool_keyfile $mint_keyfile
 
-stake_pool_pubkey=$(safecoin-keygen pubkey $stake_pool_keyfile)
+stake_pool_pubkey=$(panoptis-keygen pubkey $stake_pool_keyfile)
 
 echo "Creating validator stake accounts"
 create_validator_stakes $stake_pool_pubkey $validator_list
